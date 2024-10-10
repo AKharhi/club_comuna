@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Acerca de Club{% endblock %}
+
+{% block content %}
+<main>
+    <section class="about bg-black py-5 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="mb-4">¿Qué es el Club de la Comuna?</h2>
+                    <p style="text-align: justify;">El Club de la Comuna es una plataforma que busca fidelizar clientes y aumentar las ventas de los negocios locales. Ofrecemos a nuestros socios la oportunidad de acceder a descuentos exclusivos, promociones especiales y otras ventajas a través de una comunidad conectada.</p>
+                    <p style="text-align: justify;">Con nuestra suscripciones premium, los usuarios pueden obtener beneficios adicionales y participar en promociones únicas. Estamos dedicados a promover y apoyar a las pymes locales mientras creamos un espacio inclusivo y accesible para todos.</p>
+                    <a href="#" class="btn btn-danger btn-lg mt-4">Únete al Club</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'core/images/logo.PNG' %}" class="img-fluid rounded" alt="Club de la Comuna">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-5 text-black">
+        <div class="container">
+            <h2 class="text-center mb-4">Nuestra Misión</h2>
+            <p class="text-center">Nuestra misión es crear una comunidad conectada que beneficie tanto a los negocios locales como a sus clientes, ofreciendo beneficios auténticos y sostenibles que fomenten la lealtad y el crecimiento mutuo.</p>
+        </div>
+    </section>
+
+    <section class="bg-dark py-5 text-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Nuestros Planes Futuros</h2>
+            <p class="text-center">Actualmente, el Club de la Comuna se encuentra activo en Macul, pero tenemos planes de expansión a otras comunas como Ñuñoa, Peñalolén, y La Florida. Nuestro objetivo es estar presentes en 5 comunas para el año 2025 y eventualmente expandirnos a nivel nacional en los próximos 10 años.</p>
+        </div>
+    </section>
+</main>
+{% endblock %}

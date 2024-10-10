@@ -1,0 +1,190 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <main>
+        <section class="business-list bg-black py-5 text-white">
+            <div class="container d-flex align-items-center">
+                <div class="content">
+                    <h1 class="mb-3">Club de la Comuna</h1>
+                    <h5 class="mb-4 text-white">"Beneficios de verdad para la comunidad"</h5>
+                    <br>
+                    <a href="#" class="btn btn-danger btn-lg mb-4">Únete al club</a>
+                    <div class="d-flex">
+                        <div class="me-3 text-center">
+                            <h4>9K +</h4>
+                            <p class="text-white">Negocios Locales Socios</p>
+                        </div>
+                        <div class="text-center">
+                            <h4>500K+</h4>
+                            <p class="text-white">Clientes Inscritos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="video ms-auto"> 
+                    <!-- Video de YouTube -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vG8C1jkyUig" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+       <section class="offers bg-white py-5 text-center text-black">
+            <div class="container">
+                <h2 class="text-center mb-4">Accede a Ofertas Exclusivas para Socios del "Club"</h2>
+                <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <!-- Primera diapositiva del carrusel -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <!-- Parte izquierda: del banner -->
+                                <div class="col-md-9">
+                                    <img src="{% static 'core/images/carniceria.jpg' %}" class="d-block w-100" alt="Carnicería">
+                                    <div class="carousel-caption d-md-block text-start">
+                                        <p>Carnes Rojas - 15% dcto</p>
+                                    </div>
+                                </div>
+                                <!-- Parte derecha del banner -->
+                                <div class="col-md-3 d-flex align-items-stretch">
+                                    <div class="business-info d-flex flex-column justify-content-center" style="background: black; padding: 20px; color: white; border: 2px solid black;">
+                                        <h5>Carnicería ABC</h5>
+                                        <br>
+                                        <p>Dirección: Calle Verdadera 456</p>
+                                        <p>Horario: 10:00 AM - 8:00 PM</p>
+                                        <p>Teléfono: +56 xxxxxx</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Segunda diapositiva del carrusel -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <img src="{% static 'core/images/miniM.jpg' %}" class="d-block w-100" alt="Minimarket">
+                                    <div class="carousel-caption d-md-block text-start">
+                                        <p>Queso Gauda - $1990 1/4 </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex align-items-stretch">
+                                    <div class="business-info d-flex flex-column justify-content-center" style="background: black; padding: 20px; color: white; border: 2px solid black;">
+                                        <h5>Minimarket</h5>
+                                        <br>
+                                        <p>Dirección: Calle Chica 486</p>
+                                        <p>Horario: 10:00 AM - 8:00 PM</p>
+                                        <p>Teléfono: +56 xxxxx1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-list bg-black py-5 text-white">
+            <div class="container">
+                <h2 class="text-center mb-4">Conoce Negocios Locales Socios del "Club"</h2>
+                <div class="d-flex flex-wrap justify-content-center mb-4">
+                    <button class="btn btn-white m-1">Minimarkets</button>
+                    <button class="btn btn-white m-1">Ferreterías</button>
+                    <button class="btn btn-white m-1">Restaurantes</button>
+                    <button class="btn btn-white m-1">Peluquerías</button>
+                    <button class="btn btn-white m-1">Veterinarias</button>
+                    <button class="btn btn-white m-1">Carnicerías</button>
+                    <button class="btn btn-white m-1">Vestuario</button>
+                    <button class="btn btn-white m-1">Verdulerías</button>
+                    <a href="{% url 'negocios' %}" class="btn btn-white m-1">Más negocios...</a>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/cafeteria.jpg' %}" class="card-img-top" alt="Cafetería Dulce Sabor">
+                            <div class="card-body">
+                                <h3 class="card-title">Cafetería Dulce Sabor</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/zapateria.jpg' %}" class="card-img-top" alt="Zapatería La Doña">
+                            <div class="card-body">
+                                <h3 class="card-title">Zapatería La Doña</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/panaderia.jpg' %}" class="card-img-top" alt="Panadería MásPan">
+                            <div class="card-body">
+                                <h3 class="card-title">Panadería MásPan</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Más tarjetas de negocios aquí -->
+                </div>
+                <br>
+                <div class="text-center mt-4">
+                    <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los negocios</a>
+                </div>                
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

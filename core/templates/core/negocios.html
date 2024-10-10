@@ -1,0 +1,103 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <main>
+        
+        <section class="business-list bg-black py-5 text-white">
+            <div class="container">
+                <h2 class="text-center mb-4">Negocios Locales del "Club de la Comuna"</h2>
+                <div class="d-flex flex-wrap justify-content-center mb-4">
+                    <button class="btn btn-white m-1">Minimarkets</button>
+                    <button class="btn btn-white m-1">Ferreterías</button>
+                    <button class="btn btn-white m-1">Restaurantes</button>
+                    <button class="btn btn-white m-1">Peluquerías</button>
+                    <button class="btn btn-white m-1">Veterinarias</button>
+                    <button class="btn btn-white m-1">Carnicerías</button>
+                    <button class="btn btn-white m-1">Vestuario</button>
+                    <button class="btn btn-white m-1">Verdulerías</button>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/cafeteria.jpg' %}" class="card-img-top" alt="Cafetería Dulce Sabor">
+                            <div class="card-body">
+                                <h3 class="card-title">Cafetería Dulce Sabor</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/zapateria.jpg' %}" class="card-img-top" alt="Zapatería La Doña">
+                            <div class="card-body">
+                                <h3 class="card-title">Zapatería La Doña</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 bg-light">
+                            <img src="{% static 'core/images/panaderia.jpg' %}" class="card-img-top" alt="Panadería MásPan">
+                            <div class="card-body">
+                                <h3 class="card-title">Panadería MásPan</h3>
+                                <br>
+                                <p class="card-text">Dirección: Calle, Macul.</p>
+                                <p>Horario: 10:00 AM - 8:00 PM</p>
+                                <p class="card-text">Ubicación (mapa)</p>
+                                <div class="social-media mt-3">
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Más tarjetas de negocios aquí -->
+                </div>
+                <br>
+                <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
+                </div> 
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

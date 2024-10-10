@@ -1,0 +1,190 @@
+/* Asegúrate de incluir la fuente Roboto de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 2.5rem; /* Ajuste de tamaño */
+    color: rgb(252, 252, 252);
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 2rem; /* Ajuste de tamaño */
+    color: rgb(252, 252, 252);
+}
+
+h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 1.5rem; /* Ajuste de tamaño */
+    color: rgb(252, 252, 252);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-grey {
+    background: linear-gradient(to right, #6f6e6e, #8a8989);
+}
+
+.bg-black {
+    background: linear-gradient(to right, hsl(0, 0%, 0%), hsl(0, 0%, 76%));
+}
+.bg-blackfoot {
+    background: #000000;
+}
+
+.bg-yellow {
+    background: linear-gradient(to right, hsl(47, 88%, 56%), hsl(47, 88%, 76%));
+}
+
+.bg-orange {
+    background: linear-gradient(to right, hsl(19, 84%, 55%), hsl(19, 84%, 76%));
+}
+
+.text-white {
+    color: #f5f7f8 !important;
+}
+
+.text-orange {
+    color: #FF5733 !important;
+}
+
+.text-black {
+    color: #030303 !important;
+}
+
+.btn-danger {
+    background-color: #FF5733;
+    border-color: #FF5733;
+}
+
+.btn-danger:hover {
+    background-color: #FF5733;
+    border-color: #FF5733;
+}
+
+.btn-white {
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+}
+
+.btn-white:hover {
+    background-color: #dddad9;
+    border-color: #dddad9;
+    color:#030303
+}
+
+.btn-rrss {
+    background-color: #fefdfd;
+    border-color: #FF5733;
+    color:#c64022;
+}
+
+.btn-rrss:hover {
+    background-color: #a7a7a7;
+    border-color:  #dadada;
+    color:#030303
+}
+
+
+.card {
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+}
+
+.carousel-inner img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    bottom: 30px; /* Ajuste de distancia desde la parte inferior */
+    width: 50%; /* Texto en la mitad izquierda */
+    background-color: rgba(0, 0, 0, 0.5); /* fondo semitransparente */
+    padding: 10px;
+    border-radius: 0 5px 5px 0; 
+    text-align: left; /* Texto alineado a la izquierda */
+}
+
+.carousel-business-name {
+    position: absolute;
+    top: 10px; /* Ajuste de posición */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem; /* Tamaño de fuente ajustable */
+}
+
+/* Flechas de navegación */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Color de las flechas */
+    border-radius: 50%; 
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 100%; /* Ubicación de las flechas bajo la imagen */
+    transform: translateY(-50%);
+    width: 50px; 
+    height: 50px; 
+}
+
+.carousel-control-prev {
+    left: 40%; /* Flecha a la izquierda */
+}
+
+.carousel-control-next {
+    right: 40%; /* Flecha a la derecha */
+}
+
+.social-media {
+    text-align: center; 
+    margin-top: 20px; 
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    justify-content: center; /* Centro de los botones */
+    gap: 15px; /* Espaciado de los botones */
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-footer a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.business-list {
+    padding: 20px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.business-info {
+    background: linear-gradient(to right, hsl(42, 84%, 55%), hsl(41, 84%, 76%));
+    padding: 20px;
+    color: black;
+}
