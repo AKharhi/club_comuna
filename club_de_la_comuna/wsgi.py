@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "club_de_la_comuna.club_de_la_comuna.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "club_de_la_comuna.settings")
 
 application = get_wsgi_application()
