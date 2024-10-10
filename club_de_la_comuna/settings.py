@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "capstone_project.wsgi.application"
+WSGI_APPLICATION = "club_de_la_comuna.wsgi.application"
 
 
 # Database
