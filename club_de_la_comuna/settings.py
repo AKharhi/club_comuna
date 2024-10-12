@@ -1,10 +1,9 @@
 import os
-
 from pathlib import Path
 import dj_database_url
 import environ
 
-
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Initialize environment variables
@@ -12,30 +11,17 @@ env = environ.Env()
 # Reading .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-development')
-
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-default-key-for-development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+# ALLOWED_HOSTS
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
 
-
-
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -77,12 +63,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "club_de_la_comuna.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# Configuración de la base de datos
-DATABASE_URL = os.environ.get('DATABASE_URL')
+# Database configuration
+DATABASE_URL = env('DATABASE_URL')
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
@@ -94,10 +76,7 @@ if DATABASE_URL:
 else:
     print("No DATABASE_URL found in environment variables")  # Para depuración
 
-
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -113,10 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -125,12 +101,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-
-# Configuración de archivos estáticos
 STATIC_URL = '/static/'  # URL para acceder a los archivos estáticos
 
 # Directorio donde Django almacenará los archivos estáticos recopilados (collectstatic)
@@ -142,7 +113,6 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 # Primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
