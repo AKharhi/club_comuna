@@ -6,17 +6,63 @@
 {% block content %}
 <main>
     <section class="about bg-black py-5 text-white">
+    <div class="container">
+        <div class="about-section">
+            <div class="about-section-text">
+                <h2 class="mb-4">¿Qué es el Club de la Comuna?</h2>
+                <p>
+                    El Club de la Comuna es una plataforma digital que busca fidelizar clientes, visibilizar el comercio local con el objetivo de aumentar ventas a través de campañas publicitarias exclusivas proporcionando beneficios para nuestras comunidades.
+                </p>
+                <p>
+                    Con nuestras suscripciones premium, los usuarios pueden obtener beneficios adicionales y participar en promociones únicas. Estamos dedicados a promover y apoyar a las pymes locales mientras creamos un espacio inclusivo y accesible para todos.
+                </p>
+                <div class="btn-container">
+                    <a href="#" class="btn btn-danger btn-lg">Únete al Club</a>
+                </div>
+            </div>
+            <div class="about-section-image">
+                <img src="{% static 'core/images/elClubOk.jpeg' %}" alt="Club de la Comuna">
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+
+    <!-- Nueva sección de Beneficios -->
+    <section class="bg-white py-5 text-black">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="mb-4">¿Qué es el Club de la Comuna?</h2>
-                    <p style="text-align: justify;">El Club de la Comuna es una plataforma que busca fidelizar clientes y aumentar las ventas de los negocios locales. Ofrecemos a nuestros socios la oportunidad de acceder a descuentos exclusivos, promociones especiales y otras ventajas a través de una comunidad conectada.</p>
-                    <p style="text-align: justify;">Con nuestra suscripciones premium, los usuarios pueden obtener beneficios adicionales y participar en promociones únicas. Estamos dedicados a promover y apoyar a las pymes locales mientras creamos un espacio inclusivo y accesible para todos.</p>
-                    <a href="#" class="btn btn-danger btn-lg mt-4">Únete al Club</a>
+            <h2 class="text-center mb-4">Beneficios de unirse al Club</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-bullhorn fa-2x mb-3 text-danger"></i>
+                    <h4>Mayor visibilidad</h4>
+                    <p>Publicidad para tu negocio en nuestras plataformas, alcanzando más clientes locales.</p>
                 </div>
-                <div class="col-md-6">
-                    <img src="{% static 'core/images/logo.PNG' %}" class="img-fluid rounded" alt="Club de la Comuna">
+                <div class="col-md-4">
+                    <i class="fas fa-tags fa-2x mb-3 text-danger"></i>
+                    <h4>Ofertas Exclusivas</h4>
+                    <p>Acceso a promociones únicas y beneficios exclusivos para nuestros socios.</p>
                 </div>
+                <div class="col-md-4">
+                    <i class="fas fa-handshake fa-2x mb-3 text-danger"></i>
+                    <h4>Comunidad Local</h4>
+                    <p>Forma parte de una red de pymes que trabajan en conjunto para crecer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de redes sociales -->
+    <section class="bg-dark py-5 text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Síguenos en Redes Sociales</h2>
+            <p>Mantente informado sobre las últimas novedades, eventos y promociones del Club de la Comuna.</p>
+            <div class="social-icons">
+                <a href="https://web.facebook.com/clubdelacomuna/?_rdc=1&_rdr" class="btn btn-outline-light btn-rrss btn-lg mr-2"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.instagram.com/clubdelacomuna/?hl=es-la" class="btn btn-outline-light btn-rrss btn-lg mr-2"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.youtube.com/@ClubdelaComuna" class="btn btn-outline-light btn-rrss btn-lg mr-2"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#" class="btn btn-outline-light btn-rrss btn-lg mr-2"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </section>
@@ -24,14 +70,14 @@
     <section class="bg-white py-5 text-black">
         <div class="container">
             <h2 class="text-center mb-4">Nuestra Misión</h2>
-            <p class="text-center">Nuestra misión es crear una comunidad conectada que beneficie tanto a los negocios locales como a sus clientes, ofreciendo beneficios auténticos y sostenibles que fomenten la lealtad y el crecimiento mutuo.</p>
+            <p class="text-center">Nuestra misión es crear una comunidad conectada que beneficie tanto a las pymes locales, como a sus clientes, ofreciendo beneficios auténticos y sostenibles que fomenten la lealtad y el crecimiento mutuo.</p>
         </div>
     </section>
 
     <section class="bg-dark py-5 text-white">
         <div class="container">
-            <h2 class="text-center mb-4">Nuestros Planes Futuros</h2>
-            <p class="text-center">Actualmente, el Club de la Comuna se encuentra activo en Macul, pero tenemos planes de expansión a otras comunas como Ñuñoa, Peñalolén, y La Florida. Nuestro objetivo es estar presentes en 5 comunas para el año 2025 y eventualmente expandirnos a nivel nacional en los próximos 10 años.</p>
+            <h2 class="text-center mb-4">Nuestra Visión</h2>
+            <p class="text-center">Seguir creando contenido de valor en beneficio a la comunidad. Actualmente, el Club de la Comuna se encuentra activo en la comuna de Macul, y en plan a corto plazo de expansión a comunas como Ñuñoa, Peñalolén, y La Florida. Nuestro objetivo es estar presentes en 10 comunas para el año 2025 y expandirnos a nivel nacional en los próximos 10 años.</p>
         </div>
     </section>
 </main>

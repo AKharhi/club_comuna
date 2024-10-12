@@ -6,8 +6,8 @@
 {% block content %}
     <main>
         <section class="business-list bg-black py-5 text-white">
-            <div class="container d-flex align-items-center">
-                <div class="content">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class="content" style="flex: 1;">
                     <h1 class="mb-3">Club de la Comuna</h1>
                     <h5 class="mb-4 text-white">"Beneficios de verdad para la comunidad"</h5>
                     <br>
@@ -23,11 +23,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="video ms-auto"> 
+                <div class="video ms-auto embed-responsive embed-responsive-16by9" style="flex: 3; max-width: 45%;"> 
                     <!-- Video de YouTube -->
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vG8C1jkyUig" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/vG8C1jkyUig" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-            </div>
+            </div>            
         </section>
 
        <section class="offers bg-white py-5 text-center text-black">
@@ -185,6 +185,120 @@
                 </div>                
             </div>
         </section>
+        <!-- Botón flotante del chatbot -->
+<!-- Botón flotante del chatbot -->
+        <button id="chatbotButton" class="chatbot-btn">
+            <img src="{% static 'core/images/Clubcito.png' %}" alt="Chatbot" class="chatbot-icon">
+        </button>
+
+        
+        <!-- Contenedor del chatbot (oculto por defecto) -->
+        <div id="chatbotContainer" class="chatbot-container d-none">
+            <div class="chatbot-header">
+                <h5>Clubcito</h5>
+                <img src="{% static 'core/images/Clubcito.png' %}" alt="Clubcito" class="chatbot-header-icon">
+                <button class="close-btn">&times;</button>
+            </div>
+                        
+            <div class="chatbot-body">
+                <!-- Aquí iría el contenido o iframe del chatbot -->
+                <p>Hola, soy Clubcito, ¿en qué puedo ayudarte hoy?</p>
+            </div>
+        </div>
     </main>
 
-{% endblock %}
+    <style>
+        /* Estilo del botón flotante */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #c64022; /* café crema que combina con el tema */
+            /*color: white;*/
+            border: none;
+            border-radius: 50%;
+            padding: 20px;
+            /*font-size: 1.5rem;*/
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            width: 100px; /* Ajusta el ancho y alto del botón */
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+            /* Estilo de la imagen dentro del botón */
+        .chatbot-icon {
+            width: 100%;
+            height: auto;
+            max-width: 60px; /* Tamaño máximo de la imagen */
+        }
+
+        .chatbot-btn:hover {
+            background-color:  #FF5733; /* Un poco más oscuro en hover */
+        }
+
+        /* Estilo del contenedor del chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .chatbot-header {
+            background-color: #FF5733;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilo para el texto en el encabezado */
+        .chatbot-header h5 {
+            font-size: 1rem; /* Reduce el tamaño del texto */
+            margin: 0;
+        }
+
+        /* Estilo para la imagen en el encabezado del chatbot */
+        .chatbot-header-icon {
+            width: 40px; /* Ajusta el tamaño de la imagen según tu preferencia */
+            height: auto;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+
+        .chatbot-body {
+            padding: 15px;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Lógica para mostrar y ocultar el chatbot
+        document.getElementById('chatbotButton').addEventListener('click', function() {
+            document.getElementById('chatbotContainer').classList.toggle('d-none');
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.getElementById('chatbotContainer').classList.add('d-none');
+        });
+    </script>
+
+    {% endblock %}
