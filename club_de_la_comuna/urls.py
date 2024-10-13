@@ -9,5 +9,7 @@ urlpatterns = [
     path("negocios/", views.negocios, name="negocios"),
     path("elclub/", views.elclub, name="elclub"),
     path("admin/", admin.site.urls),
+   
+
     
 ]
