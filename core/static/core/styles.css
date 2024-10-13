@@ -217,6 +217,15 @@ img {
     max-width: 100%;
 }
 
+/* archivo: core/static/core/css/estilos.css */
+
+.card-img-top {
+    object-fit: cover; /* Recorta la imagen para que mantenga proporciones */
+    width: 100%;       /* Asegura que la imagen tome el 100% del ancho del contenedor */
+    height: 250px;     /* Define una altura fija */
+}
+
+
 
 
 
