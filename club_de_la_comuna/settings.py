@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'storages',  # Asegúrate de que 'storages' está en INSTALLED_APPS
     'core'
 ]
 
@@ -102,22 +103,41 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'  # URL para acceder a los archivos estáticos
-
-# Directorio donde Django almacenará los archivos estáticos recopilados (collectstatic)
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Directorio para los archivos estáticos propios de la aplicación (CSS, JS, imágenes, etc.)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static'),
-]
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core/static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Configuración para archivos multimedia (Diferente entre desarrollo y producción)
+if DEBUG:
+    # En desarrollo, usar almacenamiento local para multimedia
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    # En producción, usar Amazon S3
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    AWS_S3_VERIFY = True
+
+    # Definir el dominio de S3
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Configurar la URL de acceso a los archivos multimedia en S3
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
+    # Definir el almacenamiento de archivos multimedia en S3
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+# SSL y seguridad en producción
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
