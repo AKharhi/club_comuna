@@ -10,10 +10,18 @@ urlpatterns = [
     path("negocios/", views.lista_negocios, name="negocios"),
     path("elclub/", views.elclub, name="elclub"),
     path("admin/", admin.site.urls),
+<<<<<<< HEAD
     path('crear-negocio/', views.crear_negocio, name='crear_negocio'),
 
 ]
 
 # Solo en desarrollo, para servir archivos multimedia:
 
+=======
+]
+
+# Solo en desarrollo, para servir archivos multimedia:
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> c6ac06384790f39cd8859a53af52ad612bfa2b30
 
