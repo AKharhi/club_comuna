@@ -26,7 +26,6 @@ def lista_negocios(request):
 
     # Pasar los negocios al template
     return render(request, 'core/negocios.html', {'negocios': negocios})
-<<<<<<< HEAD
 
 
 def crear_negocio(request):
@@ -56,5 +55,3 @@ def crear_negocio(request):
         return redirect('home')
 
     return render(request, 'core/home.html')
-=======
->>>>>>> c6ac06384790f39cd8859a53af52ad612bfa2b30
