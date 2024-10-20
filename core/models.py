@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import validate_email
 
-
 class Negocio(models.Model):
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
@@ -9,10 +8,10 @@ class Negocio(models.Model):
     telefono = models.CharField(max_length=15)
     email = models.EmailField(max_length=100, validators=[validate_email])
     descripcion = models.TextField()
-    
-    # Proporciona un valor predeterminado para el campo 'imagen'
-    imagen = models.ImageField(upload_to='negocios/', default='negocios/default.jpg')
-    
+
+    # Campo para imagen, se subirá al bucket S3 en la carpeta 'negocios/'
+    imagen = models.ImageField(upload_to='negocios/', blank=True, null=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

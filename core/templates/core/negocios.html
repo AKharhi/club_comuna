@@ -4,63 +4,65 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <main>
-        
-        <section class="business-list bg-black py-5 text-white">
-            <div class="container">
-                <h2 class="text-center mb-4">Negocios Locales del "Club de la Comuna"</h2>
-                
-                <div class="d-flex flex-wrap justify-content-center mb-4">
-                    <button class="btn btn-white m-1">Minimarkets</button>
-                    <button class="btn btn-white m-1">Ferreterías</button>
-                    <button class="btn btn-white m-1">Restaurantes</button>
-                    <button class="btn btn-white m-1">Peluquerías</button>
-                    <button class="btn btn-white m-1">Veterinarias</button>
-                    <button class="btn btn-white m-1">Carnicerías</button>
-                    <button class="btn btn-white m-1">Vestuario</button>
-                    <button class="btn btn-white m-1">Verdulerías</button>
-                </div>
+<main>
+    <section class="business-list bg-black py-5 text-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Negocios Locales del "Club de la Comuna"</h2>
 
-                <div class="row g-4">
-                    <!-- Itera sobre todos los negocios pasados desde la vista -->
-                    {% for negocio in negocios %}
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-light">
-                            <!-- Mostrar imagen del negocio -->
-                            {% if negocio.imagen %}
-                                <img src="{{ negocio.imagen.url }}" class="card-img-top" alt="{{ negocio.nombre }}">
-                            {% else %}
-                                <img src="{% static 'core/images/default.jpg' %}" class="card-img-top" alt="{{ negocio.nombre }}">
-                            {% endif %}
-                            
-                            <div class="card-body">
-                                <h3 class="card-title">{{ negocio.nombre }}</h3>
-                                <p class="card-text">{{ negocio.descripcion }}</p>
-                                <p class="card-text">Dirección: {{ negocio.direccion }}</p>
-                                <p>Horario: {{ negocio.horario }}</p>
-                                <div class="social-media mt-3">
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-facebook-f"></i> Facebook
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-whatsapp"></i> Whatsapp
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-instagram"></i> Instagram
-                                    </a>
-                                </div>
+            <div class="d-flex flex-wrap justify-content-center mb-4">
+                <button class="btn btn-white m-1">Minimarkets</button>
+                <button class="btn btn-white m-1">Ferreterías</button>
+                <button class="btn btn-white m-1">Restaurantes</button>
+                <button class="btn btn-white m-1">Peluquerías</button>
+                <button class="btn btn-white m-1">Veterinarias</button>
+                <button class="btn btn-white m-1">Carnicerías</button>
+                <button class="btn btn-white m-1">Vestuario</button>
+                <button class="btn btn-white m-1">Verdulerías</button>
+            </div>
+
+            <div class="row g-4">
+                <!-- Itera sobre todos los negocios pasados desde la vista -->
+                {% for negocio in negocios %}
+                <div class="col-md-4">
+                    <div class="card h-100 bg-light">
+                        <!-- Mostrar imagen del negocio -->
+                        {% if negocio.imagen %}
+
+                            <img src="{{ negocio.imagen.url }}" class="card-img-top" alt="{{ negocio.nombre }}">
+                        {% else %}
+                            <img src="{% static 'core/images/default.jpg' %}" class="card-img-top" alt="{{ negocio.nombre }}">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h3 class="card-title">{{ negocio.nombre }}</h3>
+                            <p class="card-text">{{ negocio.descripcion }}</p>
+                            <p class="card-text">Dirección: {{ negocio.direccion }}</p>
+                            <p>Horario: {{ negocio.horario }}</p>
+                            <div class="social-media mt-3">
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                    <i class="fab fa-whatsapp"></i> Whatsapp
+                                </a>
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
-                
-                <br>
-                <div class="text-center mt-4">
-                    <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
-                </div> 
+                {% endfor %}
             </div>
-        </section>
-    </main>
 
+            <br>
+
+           
+
+            <div class="text-center mt-4">
+                <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}

@@ -10,9 +10,10 @@ urlpatterns = [
     path("negocios/", views.lista_negocios, name="negocios"),
     path("elclub/", views.elclub, name="elclub"),
     path("admin/", admin.site.urls),
+    path('crear-negocio/', views.crear_negocio, name='crear_negocio'),
+
 ]
 
 # Solo en desarrollo, para servir archivos multimedia:
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

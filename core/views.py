@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
 
 
@@ -26,3 +26,32 @@ def lista_negocios(request):
 
     # Pasar los negocios al template
     return render(request, 'core/negocios.html', {'negocios': negocios})
+
+
+def crear_negocio(request):
+    if request.method == 'POST':
+        try:
+            imagen = request.FILES.get('imagen')
+
+            if not imagen:
+                print("⚠️ No se ha recibido ninguna imagen.")
+                return redirect('home')
+
+            negocio = Negocio.objects.create( # pylint: disable=no-member 
+                nombre=request.POST['nombre'],
+                direccion=request.POST['direccion'],
+                horario=request.POST['horario'],
+                telefono=request.POST['telefono'],
+                email=request.POST['email'],
+                descripcion=request.POST['descripcion'],
+                imagen=imagen
+            )
+
+            print(f"✅ Imagen subida a: {negocio.imagen.url}")
+
+        except Exception as e:
+            print(f"⚠️ Error al subir la imagen: {str(e)}")
+
+        return redirect('home')
+
+    return render(request, 'core/home.html')
