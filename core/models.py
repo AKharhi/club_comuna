@@ -9,6 +9,10 @@ class Categoria(models.Model):
     def __str__(self):
         return str(self.nombre)
     
+    def numero_negocios(self):
+        return self.negocios.count() #cuenta números de negocios  # pylint: disable=no-member
+
+    
 class Negocio(models.Model):
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)

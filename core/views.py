@@ -27,31 +27,18 @@ def lista_negocios(request):
     # Pasar los negocios al template
     return render(request, 'core/negocios.html', {'negocios': negocios})
 
+def negocios_por_categoria(request):
+    categoria_id = request.GET.get('categoria')
+    categorias = Categoria.objects.all()  # Todas las categorías # pylint: disable=no-member
 
-def crear_negocio(request):
-    if request.method == 'POST':
-        try:
-            imagen = request.FILES.get('imagen')
+    if categoria_id:
+        categoria = get_object_or_404(Categoria, id=categoria_id)
+        negocios = Negocio.objects.filter(categoria=categoria)  # Negocios filtrados por categoría # pylint: disable=no-member
+    else:
+        negocios = Negocio.objects.all()  # Todos los negocios # pylint: disable=no-member
 
-            if not imagen:
-                print("⚠️ No se ha recibido ninguna imagen.")
-                return redirect('home')
-
-            negocio = Negocio.objects.create( # pylint: disable=no-member 
-                nombre=request.POST['nombre'],
-                direccion=request.POST['direccion'],
-                horario=request.POST['horario'],
-                telefono=request.POST['telefono'],
-                email=request.POST['email'],
-                descripcion=request.POST['descripcion'],
-                imagen=imagen
-            )
-
-            print(f"✅ Imagen subida a: {negocio.imagen.url}")
-
-        except Exception as e:
-            print(f"⚠️ Error al subir la imagen: {str(e)}")
-
-        return redirect('home')
-
-    return render(request, 'core/home.html')
+    return render(request, 'core/negocios.html', {
+        'negocios': negocios,
+        'categorias': categorias,
+        'categoria_seleccionada': int(categoria_id) if categoria_id else None,
+    })
