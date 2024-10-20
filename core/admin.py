@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from core.models import Negocio
+from core.models import *
 
 class NegocioAdmin(admin.ModelAdmin):
     # Campos que se mostrarán en la lista del admin
@@ -17,4 +17,6 @@ class NegocioAdmin(admin.ModelAdmin):
     ver_imagen.short_description = "Imagen"
 
 # Registro del modelo Negocio con su configuración personalizada en el admin
+
 admin.site.register(Negocio, NegocioAdmin)
+admin.site.register(Categoria)
