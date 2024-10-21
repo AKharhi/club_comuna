@@ -189,21 +189,33 @@ footer p {
     color: black;
 }
 
+/* El Club*/
 .img-fluid {
     width: 100%;
-    height: auto; /* Asegura que la imagen mantenga su relación de aspecto */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
 }
 
 .col-md-6 {
+    /* Eliminamos flex para el texto, mantenemos flex solo en la imagen */
+    display: block;
+}
+
+.col-md-6.img-container {
     display: flex;
-    align-items: center; /* Alinea verticalmente la imagen con el contenido vecino */
+    align-items: center; /* Alinea la imagen verticalmente al centro */
 }
 
 img {
-    max-height: 100%; /* Limita la altura de la imagen para que se ajuste al contenedor */
-    object-fit: cover; /* Asegura que la imagen mantenga su proporción y se recorte si es necesario */
+    max-height: 100%; /* Limita la altura de la imagen al contenedor */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
 }
 
+p {
+    line-height: 1.8; /* Asegura un buen espaciado entre las líneas */
+}
+
+
+/*Formulario contacto*/
 .form-container {
     background-color: #f9f9f9;
     border: 2px solid #ddd;
@@ -217,7 +229,11 @@ img {
     max-width: 100%;
 }
 
-/* archivo: core/static/core/css/estilos.css */
+p {
+    line-height: 1.6; /* Ajusta el valor según el espaciado que prefieras */
+}
+
+
 
 .card-img-top {
     object-fit: cover; /* Recorta la imagen para que mantenga proporciones */

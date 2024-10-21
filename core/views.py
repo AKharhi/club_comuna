@@ -1,5 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
+from django.conf import settings
+from django.shortcuts import render
+
+# def home(request):
+#     return render(request, 'core/home.html', {
+#         'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY
+#     })
+
 
 
 
@@ -42,3 +50,5 @@ def negocios_por_categoria(request):
         'categorias': categorias,
         'categoria_seleccionada': int(categoria_id) if categoria_id else None,
     })
+
+

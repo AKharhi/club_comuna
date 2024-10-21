@@ -6,33 +6,26 @@
 {% block content %}
 <main>
     <section class="about bg-black py-5 text-white">
-    <div class="container">
-        <div class="about-section">
-            <div class="about-section-text">
-                <h2 class="mb-4">¿Qué es el Club de la Comuna?</h2>
-                <p>
-                    El Club de la Comuna es una plataforma digital que busca fidelizar clientes, visibilizar el comercio local con el objetivo de aumentar ventas a través de campañas publicitarias exclusivas proporcionando beneficios para nuestras comunidades.
-                </p>
-                <p>
-                    Con nuestras suscripciones premium, los usuarios pueden obtener beneficios adicionales y participar en promociones únicas. Estamos dedicados a promover y apoyar a las pymes locales mientras creamos un espacio inclusivo y accesible para todos.
-                </p>
-                <div class="btn-container">
-                    <a href="#" class="btn btn-danger btn-lg">Únete al Club</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="mb-4">¿Qué es el Club de la Comuna?</h2>
+                    <p style="text-align: justify;"> El Club de la Comuna es una plataforma digital que busca fidelizar clientes, visibilizar el comercio local con el objetivo de aumentar ventas a través de campañas publicitarias exclusivas proporcionando beneficios para nuestras comunidades.</p>
+                    <p style="text-align: justify;">Con nuestras suscripciones premium, los usuarios pueden obtener beneficios adicionales y participar en promociones únicas. Estamos dedicados a promover y apoyar a las pymes locales mientras creamos un espacio inclusivo y accesible para todos.</p>
+                    <a href="#" class="btn btn-danger btn-lg mt-4">Únete al Club</a>
+                </div>
+                <div class="col-md-6 img-container">
+                    <img src="{% static 'core/images/elClubOk.jpeg' %}" class="img-fluid rounded" alt="Club de la Comuna">
                 </div>
             </div>
-            <div class="about-section-image">
-                <img src="{% static 'core/images/elClubOk.jpeg' %}" alt="Club de la Comuna">
-            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+   
     
-
     <!-- Nueva sección de Beneficios -->
     <section class="bg-white py-5 text-black">
         <div class="container">
-            <h2 class="text-center mb-4">Beneficios de unirse al Club</h2>
+            <h2 class="text-center mb-4">Beneficios de Unirse al Club</h2>
             <div class="row text-center">
                 <div class="col-md-4">
                     <i class="fas fa-bullhorn fa-2x mb-3 text-danger"></i>

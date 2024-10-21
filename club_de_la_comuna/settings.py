@@ -152,6 +152,12 @@ if not DEBUG:
 # ==============================================
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# ==============================================
+# GOOGLE MAPS
+# ==============================================
+GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY', default='')
+
+
 # SSL y seguridad en producción
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
