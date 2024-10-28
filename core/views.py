@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
 from django.conf import settings
 from django.shortcuts import render
+import requests
+from django.http import JsonResponse
 
 # def home(request):
 #     return render(request, 'core/home.html', {
@@ -51,4 +53,20 @@ def negocios_por_categoria(request):
         'categoria_seleccionada': int(categoria_id) if categoria_id else None,
     })
 
+#Vista2 Chatbot Clubcito (Ventana)
+REPLIT_BOT_URL = "https://a1e941e0-0052-4d88-931b-1a97ba107373-00-2dox5ng8dzsii.kirk.replit.dev//"  # URL del bot en Replit
 
+def start_conversation(request):
+    response = requests.get(f"{REPLIT_BOT_URL}/start")
+    return JsonResponse(response.json())
+
+def send_message(request):
+    message = request.POST.get('message')
+    thread_id = request.POST.get('thread_id')
+
+    payload = {
+        'message': message,
+        'thread_id': thread_id,
+    }
+    response = requests.post(f"{REPLIT_BOT_URL}/chat", json=payload)
+    return JsonResponse(response.json())

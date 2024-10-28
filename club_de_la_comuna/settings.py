@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'storages',  # Gestión de archivos con S3
     'core',      # Tu aplicación principal
+    "corsheaders", #chatbot
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://3280a653-bce3-4755-b076-9d26aea1d67b-00-1yju02xjv8g7k.spock.replit.dev",
 ]
 
 ROOT_URLCONF = "club_de_la_comuna.urls"
