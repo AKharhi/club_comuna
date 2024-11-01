@@ -29,6 +29,11 @@ def elclub(request):
 def negocios(request):
     return render(request, "core/negocios.html")
 
+def inicio_sesion(request):
+    return render(request, "core/inicio_sesion.html")
+
+def como_unirse(request):
+    return render(request, "core/como_unirse.html")
 
 def lista_negocios(request):
     # Obtener todos los objetos del modelo Negocio
