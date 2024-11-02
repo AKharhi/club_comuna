@@ -16,7 +16,8 @@ from django.http import JsonResponse
 # Create your views here.
 
 def home(request):
-    return render(request, "core/home.html")
+    negocios = Negocio.objects.all()  # # pylint: disable=no-member
+    return render(request, 'core/home.html', {'negocios': negocios})
 
 def contacto(request):
     return render(request, "core/contacto.html")
