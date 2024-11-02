@@ -22,11 +22,7 @@ class Oferta(models.Model):
     fecha_fin = models.DateField()  # Fecha de fin oferta
     activa = models.BooleanField(default=False)  # Indica si la oferta está activa o no
 
-<<<<<<< HEAD
-    def __str__(self):
-=======
     def _str_(self):
->>>>>>> staging2
         return str(self.nombre)
 
 
@@ -59,12 +55,7 @@ class Negocio(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-<<<<<<< HEAD
 def __str__(self):
     return f"{self.nombre} - {self.categoria.nombre} - {self.oferta.activa}"  # pylint: disable=no-member
 
 
-=======
-def _str_(self):
-    return f"{self.nombre} - {self.categoria.nombre} - {self.oferta.activa}"  # pylint: disable=no-member
->>>>>>> staging2

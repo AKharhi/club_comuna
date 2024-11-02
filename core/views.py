@@ -16,7 +16,6 @@ def contacto(request):
 def elclub(request):
     return render(request, "core/elclub.html")
 
-<<<<<<< HEAD
 
 def negocios(request):
     return render(request, "core/negocios.html")
@@ -27,8 +26,6 @@ def inicio_sesion(request):
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
 
-=======
->>>>>>> staging2
 def lista_negocios(request):
     negocios = Negocio.objects.all()  # pylint: disable=no-member  # 
     return render(request, 'core/negocios.html', {'negocios': negocios})
