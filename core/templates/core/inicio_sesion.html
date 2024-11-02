@@ -18,7 +18,7 @@
         <!-- Lado derecho: Inicio de Sesión -->
         <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
             <h2 class="mb-4">Inicia sesión con tu cuenta Google</h2>
-            <a href="#" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" target="_blank" style="width: 80%;">
+            <a href="{% url 'usuario_logueado' %}" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
                 Continúa con Google
             </a>

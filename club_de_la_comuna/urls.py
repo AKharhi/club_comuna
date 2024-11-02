@@ -14,4 +14,5 @@ urlpatterns = [
     path('chat/send/', views.send_message, name='send_message'),
     path('inicio_sesion/', views.inicio_sesion, name='inicio_sesion'),
     path('como_unirse/', views.como_unirse, name='como_unirse'),
+    path('usuario_logueado/', views.usuario_logueado, name='usuario_logueado'),
 ]

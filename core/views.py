@@ -26,6 +26,9 @@ def inicio_sesion(request):
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
 
+def usuario_logueado(request):
+    return render(request, "core/usuario_logueado.html")
+
 def lista_negocios(request):
     negocios = Negocio.objects.all()  # pylint: disable=no-member  # 
     return render(request, 'core/negocios.html', {'negocios': negocios})
