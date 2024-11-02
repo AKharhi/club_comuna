@@ -15,4 +15,5 @@ urlpatterns = [
     path('negocios/categoria/<int:categoria_id>/', negocios_por_categoria, name='negocios_por_categoria'),
     path('chat/start/', views.start_conversation, name='start_conversation'),
     path('chat/send/', views.send_message, name='send_message'),
+
 ]
