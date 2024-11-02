@@ -20,3 +20,4 @@ class NegocioAdmin(admin.ModelAdmin):
 
 admin.site.register(Negocio, NegocioAdmin)
 admin.site.register(Categoria)
+admin.site.register(Oferta)
