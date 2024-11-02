@@ -1,7 +1,7 @@
 from django.conf import settings  # Configuración de Django
 from django.conf.urls.static import static  # Archivos estáticos y multimedia
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core import views
 urlpatterns = [
     path("", views.home, name="home"),
@@ -14,4 +14,6 @@ urlpatterns = [
     path('chat/send/', views.send_message, name='send_message'),
     path('inicio_sesion/', views.inicio_sesion, name='inicio_sesion'),
     path('como_unirse/', views.como_unirse, name='como_unirse'),
+    path('accounts/', include('allauth.urls')),
+
 ]

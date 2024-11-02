@@ -28,6 +28,11 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 # APPLICATION DEFINITION
 # ==============================================
 INSTALLED_APPS = [
+    'django.contrib.sites',  # Necesario para allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,6 +44,8 @@ INSTALLED_APPS = [
     "corsheaders", #chatbot
 ]
 
+
+
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",  # Archivos estáticos optimizados
     "django.middleware.security.SecurityMiddleware",
@@ -49,6 +56,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    'allauth.account.middleware.AccountMiddleware',  # Agrega esta línea
+
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -164,8 +173,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY', default='')
 
 
-# SSL y seguridad en producción
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'informaticas.aconcagua@gmail.com'
+EMAIL_HOST_PASSWORD = 'Brandikiarita'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
