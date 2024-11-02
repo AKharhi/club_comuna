@@ -185,38 +185,32 @@
                     <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los negocios</a>
                 </div>                
             </div>
+
         </section>
-    </main>
+        <section class="map-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Ubicación de Negocios</h2>
+                <div id="map" style="height: 400px; width: 100%;"></div>
+            </div>
+        </section> 
+        
+        <div id="map"></div>
+          
 
-    <section class="map-section py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Ubicación de Negocios</h2>
-            <div id="map" style="height: 400px; width: 100%;"></div>
-        </div>
-    </section>
+    </main> 
+    <!-- 
 
-    <script>
-        // Inicializa el mapa
-        function initMap() {
-            const macul = { lat: -33.4929, lng: -70.6117 }; // Coordenadas de Macul, Chile
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: macul,
-            });
 
-            // Ejemplo: Marcador en la ubicación de un negocio
-            new google.maps.Marker({
-                position: macul,
-                map,
-                title: "Negocio Local",
-            });
-        }
-    </script>
+ -->
 
-    <!-- Carga el SDK de Google Maps -->
-    <script 
-        src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap"
-        async defer>
+
+
+ <script
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
+ defer
+></script>
+    <script src="{% static 'core/scripts.js' %}">
+        
     </script>
 
     {% endblock %}

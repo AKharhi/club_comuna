@@ -75,3 +75,4 @@ def send_message(request):
     }
     response = requests.post(f"{REPLIT_BOT_URL}/chat", json=payload)
     return JsonResponse(response.json())
+
