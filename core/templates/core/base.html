@@ -25,7 +25,7 @@
                 </a>
                 <h4 class="logo text-white fw-bold m-0"></h4>
             </div>
-            
+
             <nav>
                 <ul class="nav">
                     <li class="nav-item">
@@ -34,12 +34,24 @@
                     <li class="nav-item">
                         <a class="btn text-white m-1" href="{% url 'contacto' %}">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger m-1" href="{% url 'inicio_sesion' %}">Iniciar Sesión</a>
-                    </li>
+            
+                    <!-- Mostrar el nombre de usuario si está autenticado -->
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="btn text-white m-1">Bienvenido, {{ request.user.username }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-danger m-1" href="{% url 'account_logout' %}">Cerrar Sesión</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-danger m-1" href="{% url 'account_login' %}">Iniciar Sesión</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
-        </div>
+            </div>
+            
     </header>
 
     {% block content %}

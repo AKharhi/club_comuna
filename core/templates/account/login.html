@@ -1,28 +1,38 @@
 {% extends 'core/base.html' %}
-{% load static %}
+{% load socialaccount %}
+{% load static %}  <!-- Cargar las etiquetas de estáticos -->
 
-{% block title %}Club de la Comuna - Iniciar Sesión{% endblock %}
+{% block title %}Iniciar Sesión - Club de la Comuna{% endblock %}
 
 {% block content %}
 <main>
     <section class="login-section d-flex">
         <!-- Lado izquierdo: Información del Club -->
         <div class="club-info d-flex flex-column align-items-center justify-content-center text-white p-5" style="flex: 1; background: linear-gradient(to bottom, #333, #555);">
-
             <p class="text-center fs-4 mb-5">Obtén tu Tarjeta Virtual para acceder a los <strong>BENEFICIOS</strong> exclusivos del Club.</p>
             <div class="icon mt-auto mb-3">
-                <img src="{% static 'core/images/tarjeta_virtual.jpg' %}" alt="Icono Club" style="width: 205spx; height: 150px;">
+                <img src="{% static 'core/images/tarjeta_virtual.jpg' %}" alt="Icono Club" style="width: 205px; height: 150px;">
             </div>
         </div>
 
-        <!-- Lado derecho: Inicio de Sesión -->
-        <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
-            <h2 class="mb-4">Inicia sesión con tu cuenta Google</h2>
-            <a href="#" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" target="_blank" style="width: 80%;">
+        <!-- Lado derecho: Formulario de Inicio de Sesión -->
+          <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
+            <h2 class="mb-4">Inicia sesión con tu cuenta</h2>
+            
+            <form method="post" action="{% url 'account_login' %}" style="width: 80%;">
+                {% csrf_token %}
+                {{ form.as_p }}      <!-- Esto muestra el formulario de inicio de sesión -->
+                 <button type="submit" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 100%;">
+                    Iniciar sesión
+                </button>
+            </form>
+        
+            <!-- Opción para iniciar sesión con Google -->
+            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
                 Continúa con Google
             </a>
-            <br>
+
             <p class="mb-3">¿No tienes cuenta Google?</p>
             <a href="https://accounts.google.com/signup" target="_blank" class="btn btn-outline-primary d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
