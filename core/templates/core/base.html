@@ -17,30 +17,47 @@
 
 </head>
 <body>
-    <header class="p-3 bg-black">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <a href="{% url 'home' %}">
-                    <img src="{% static 'core/images/logoA.PNG' %}" alt="Logo" style="height: 110px; margin-right: 10px;">
-                </a>
-                <h4 class="logo text-white fw-bold m-0"></h4>
-            </div>
-            
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="btn text-white m-1" href="{% url 'elclub' %}" tabindex="0">Acerca del Club</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn text-white m-1" href="{% url 'contacto' %}">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger m-1" href="{% url 'inicio_sesion' %}">Iniciar Sesión</a>
-                    </li>
-                </ul>
-            </nav>
+   <header class="p-3 bg-black position-fixed w-100" style="top: 0; z-index: 1030;">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'core/images/logoA.PNG' %}" alt="Logo" style="height: 110px; margin-right: 10px;">
+            </a>
+            <h4 class="logo text-white fw-bold m-0"></h4>
         </div>
-    </header>
+
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="btn text-white m-1" href="{% url 'elclub' %}" tabindex="0">Acerca del Club</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn text-white m-1" href="{% url 'contacto' %}">Contacto</a>
+                </li>
+
+                <!-- Mostrar el nombre de usuario si está autenticado -->
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="btn text-white m-1">Bienvenido, {{ request.user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger m-1" href="{% url 'account_logout' %}">Cerrar Sesión</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-danger m-1" href="{% url 'account_login' %}">Iniciar Sesión</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Asegúrate de agregar un margen superior en el contenido para que no quede oculto bajo el header fijo -->
+<main style="margin-top: 120px;">
+    <!-- Aquí va el contenido de tu página -->
+</main>
+
 
     {% block content %}
     {% endblock %}

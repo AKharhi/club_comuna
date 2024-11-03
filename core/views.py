@@ -20,8 +20,8 @@ def elclub(request):
 def negocios(request):
     return render(request, "core/negocios.html")
 
-def inicio_sesion(request):
-    return render(request, "core/inicio_sesion.html")
+#def inicio_sesion(request):
+ #   return render(request, "account/login.html")  allauth maneja la lógica
 
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
