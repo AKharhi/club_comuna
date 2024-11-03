@@ -21,3 +21,10 @@ class NegocioAdmin(admin.ModelAdmin):
 admin.site.register(Negocio, NegocioAdmin)
 admin.site.register(Categoria)
 admin.site.register(Oferta)
+
+
+@admin.register(ClienteProfile)
+class ClienteProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'codigo_socio', 'fecha_emision', 'tarjeta_activa']
+    list_filter = ['tarjeta_activa']
+    search_fields = ['user__username', 'codigo_socio']
