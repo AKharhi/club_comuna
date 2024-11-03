@@ -21,14 +21,14 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # SECURITY SETTINGS
 # ==============================================
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-default-key-for-development')
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = True  # Cambiar a False en producción
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 
 # ==============================================
 # APPLICATION DEFINITION
 # ==============================================
 INSTALLED_APPS = [
-    'django.contrib.sites',  # Necesario para allauth
+    'django.contrib.sites',  # Necesario para django-allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -40,11 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'storages',  # Gestión de archivos con S3
-    'core',      # Tu aplicación principal
-    "corsheaders", #chatbot
+    'core',  # Aplicación principal
+    "corsheaders",  # Para manejo de CORS, útil para APIs
 ]
-
-
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",  # Archivos estáticos optimizados
@@ -56,16 +54,25 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    'allauth.account.middleware.AccountMiddleware',  # Agrega esta línea
-
 ]
 
+# ==============================================
+# CORS CONFIGURATION
+# ==============================================
 CORS_ALLOWED_ORIGINS = [
     "https://3280a653-bce3-4755-b076-9d26aea1d67b-00-1yju02xjv8g7k.spock.replit.dev",
+    "https://accounts.google.com"
 ]
 
+# ==============================================
+# URL CONFIGURATION
+# ==============================================
 ROOT_URLCONF = "club_de_la_comuna.urls"
+WSGI_APPLICATION = "club_de_la_comuna.wsgi.application"
 
+# ==============================================
+# TEMPLATES CONFIGURATION
+# ==============================================
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -74,15 +81,13 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
-                "django.template.context_processors.request",
+                "django.template.context_processors.request",  # Necesario para allauth
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
-
-WSGI_APPLICATION = "club_de_la_comuna.wsgi.application"
 
 # ==============================================
 # DATABASE CONFIGURATION
@@ -131,10 +136,8 @@ AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default='us-east-1')
 
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Parámetros adicionales para mejorar la gestión de archivos
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',  # Cacheo de un día
 }
@@ -168,23 +171,68 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ==============================================
-# GOOGLE MAPS
+# GOOGLE MAPS API KEY
 # ==============================================
 GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY', default='')
 
-
-
+# ==============================================
+# AUTHENTICATION BACKENDS
+# ==============================================
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 1
+# ==============================================
+# SESSION CONFIGURATION
+# ==============================================
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
+# ==============================================
+# django-allauth CONFIGURATION
+# ==============================================
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
 LOGOUT_REDIRECT_URL = '/'
 
+# Configuración de django-allauth
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'CLIENT_ID': '200853372326-g42lob8cskpnuu30e4cdbo4phgcu9jl5',
+        'SECRET': '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',
+    }
+}
+
+# ==============================================
+# LOGGING CONFIGURATION
+# ==============================================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'allauth': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# ==============================================
+# EMAIL CONFIGURATION
+# ==============================================
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -192,4 +240,3 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'informaticas.aconcagua@gmail.com'
 EMAIL_HOST_PASSWORD = 'zexhyplkckmhvsf'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
