@@ -91,6 +91,45 @@ body {
     color:#030303
 }
 
+/* video home */
+@media (max-width: 576px) {
+    .business-list .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .business-list .content {
+        order: 1;
+        text-align: center;
+    }
+
+    .business-list .video {
+        order: 2;
+        width: 100%; /* Asegura que el video ocupe todo el ancho disponible */
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .business-list .video iframe {
+        width: 100%; /* Asegura que el iframe ocupe todo el ancho del contenedor */
+        height: auto; /* Ajusta la altura para mantener la proporción */
+    }
+}
+
+/* banner */
+.offers .card {
+    background-color: #FF5733; /* Fondo negro */
+    border: none; /* Opcional: quitar borde */
+}
+
+.offers .card .card-title {
+    color: black; /* Asegura que el título sea blanco */
+}
+
+.offers .card .card-text {
+    color: black; /* Asegura que el texto sea blanco */
+}
 
 .card {
     border-radius: 10px;
