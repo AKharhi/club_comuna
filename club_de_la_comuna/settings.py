@@ -192,7 +192,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # ==============================================
 # django-allauth CONFIGURATION
 # ==============================================
-SITE_ID = 1
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
 LOGOUT_REDIRECT_URL = '/'
 
