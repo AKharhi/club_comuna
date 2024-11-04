@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'storages',  # Gestión de archivos con S3
     'core',  # Aplicación principal
     "corsheaders",  # Para manejo de CORS, útil para APIs
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
