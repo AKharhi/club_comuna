@@ -3,6 +3,7 @@ from django.core.validators import validate_email
 
 
 
+
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
 

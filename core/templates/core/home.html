@@ -31,81 +31,38 @@
             </div>            
         </section>
 
+        <!-- Sección de Negocios con Ofertas Activas -->
         <section class="offers bg-white py-5 text-center text-black">
             <div class="container">
                 <h2 class="text-center mb-4">Accede a Ofertas Exclusivas para Socios del "Club"</h2>
                 <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <!-- Primera diapositiva con varias opciones -->
-                        <div class="carousel-item active">
+                        {% for grupo in grupos_negocios %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row">
+                                {% for negocio in grupo %}
+                                {% if negocio %}
                                 <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/carniceria.jpg' %}" class="card-img-top" alt="Carnicería">
+                                    <div class="card h-100 text-center p-3 shadow-lg rounded hvr-grow" data-aos="fade-up">
+                                        {% if negocio.imagen %}
+                                            <img src="{{ negocio.imagen.url }}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                                        {% else %}
+                                            <img src="{% static 'core/images/default.jpg' %}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                                        {% endif %}
                                         <div class="card-body">
-                                            <h5 class="card-title">Carnicería ABC</h5>
-                                            <p class="card-text">Carnes Rojas - 15% dcto</p>
-                                            <p class="card-text">Dirección: Calle Verdadera 456</p>
+                                            <h5 class="card-title">{{ negocio.nombre }}</h5>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
+                                            <p class="card-text"><i class="fas fa-tag"></i> Oferta: {{ negocio.oferta.nombre }}</p>
+                                            <p class="card-text">{{ negocio.oferta.descripcion }}</p>
+                                            <p class="card-text"><i class="fas fa-calendar-alt"></i> Desde el {{ negocio.oferta.fecha_inicio }}<br>Hasta el {{ negocio.oferta.fecha_fin }}</p>
                                         </div>
-                                    </div>
+                                    </div>                                   
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/miniM.jpg' %}" class="card-img-top" alt="Minimarket">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Minimarket XYZ</h5>
-                                            <p class="card-text">Queso Gauda - $1990 1/4</p>
-                                            <p class="card-text">Dirección: Calle Chica 486</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/verduleria.jpg' %}" class="card-img-top" alt="Verdulería">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Verdulería Fresh</h5>
-                                            <p class="card-text">Frutas y Verduras Frescas</p>
-                                            <p class="card-text">Dirección: Calle Sana 789</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-                        <!-- Segunda diapositiva con más opciones -->
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/panaderia.jpg' %}" class="card-img-top" alt="Panadería">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Panadería La Esquina</h5>
-                                            <p class="card-text">Pan Fresco todos los días</p>
-                                            <p class="card-text">Dirección: Calle Horno 123</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/floristeria.jpg' %}" class="card-img-top" alt="Floristería">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Floristería Rosas</h5>
-                                            <p class="card-text">Flores para toda ocasión</p>
-                                            <p class="card-text">Dirección: Calle Bella 456</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card h-100 text-center p-3">
-                                        <img src="{% static 'core/images/farmacia.jpeg' %}" class="card-img-top" alt="Farmacia">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Farmacia Salud</h5>
-                                            <p class="card-text">Medicamentos y productos de salud</p>
-                                            <p class="card-text">Dirección: Calle Cuidado 789</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- Controles del carrusel -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
@@ -117,17 +74,19 @@
                         <span class="visually-hidden">Siguiente</span>
                     </button>
                 </div>
+                <br>
+                <div class="text-center mt-4">
+                    <a href="{% url 'negocios_con_ofertas' %}" class="btn btn-danger">Ver todas las Ofertas</a>
+                </div>        
             </div>
-        </section>
+        </section>   
         
 
         <section class="business-list bg-black py-5 text-white">
             <div class="container">
-                <h2 class="text-center mb-4">Conoce Negocios Locales Socios del "Club"</h2>
-
-                
+                <h2 class="text-center mb-4">Conoce Negocios Locales Socios del "Club"</h2>  
                 <div class="row g-4">
-                    {% for negocio in negocios|slice:":3" %}
+                    {% for negocio in negocios_premium %}
                         <div class="col-md-4">
                             <div class="card h-100 bg-light">
                                 {% if negocio.imagen %}
@@ -143,17 +102,14 @@
                             </div>
                         </div>
                     {% endfor %}
-                </div>
-                
-                    <!-- Más tarjetas de negocios aquí -->
-                </div>
+                </div>                
                 <br>
                 <div class="text-center mt-4">
-                    <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los negocios</a>
+                    <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los Negocios</a>
                 </div>                
             </div>
-
         </section>
+
         <section class="map-section py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Ubicación de Negocios</h2>
@@ -174,8 +130,8 @@
 
  <script
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
- defer
-></script>
+ defer>
+</script>
     <script src="{% static 'core/scripts.js' %}">
         
     </script>
