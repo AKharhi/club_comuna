@@ -6,7 +6,7 @@ from datetime import date
 
 
 class ClienteProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     codigo_socio = models.CharField(max_length=10)
     fecha_emision = models.DateField(default=date.today)
     tarjeta_activa = models.BooleanField(default=True)
@@ -20,7 +20,7 @@ class ClienteProfile(models.Model):
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
 
-    def _str_(self):
+    def __str__(self):
         return str(self.nombre)
     
     def numero_negocios(self):
@@ -36,7 +36,7 @@ class Oferta(models.Model):
     fecha_fin = models.DateField()  # Fecha de fin oferta
     activa = models.BooleanField(default=False)  # Indica si la oferta está activa o no
 
-    def _str_(self):
+    def __str__(self):
         return str(self.nombre)
 
 
