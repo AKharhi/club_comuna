@@ -8,16 +8,31 @@ from django.http import HttpResponse
 from .forms import ContactForm
 from django.shortcuts import render, redirect
 from django.contrib import messages  # Para manejar mensajes flash
-
-
-
+from core.models import Negocio, Oferta
 import requests
+from itertools import zip_longest
 
 REPLIT_BOT_URL = "https://a1e941e0-0052-4d88-931b-1a97ba107373-00-2dox5ng8dzsii.kirk.replit.dev/"  # URL del bot en Replit
 
 def home(request):
-    negocios = Negocio.objects.all()[:3]  #  # pylint: disable=no-member  # 
-    return render(request, 'core/home.html', {'negocios': negocios, 'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY})
+   # Filtra los negocios que tienen ofertas activas
+    negocios_con_ofertas_activas = Negocio.objects.filter(oferta__activa=True)  # pylint: disable=no-member
+    
+    # Divide los negocios en grupos de tres para el banner
+    def grouper(iterable, n, fillvalue=None):
+        args = [iter(iterable)] * n
+        return zip_longest(*args, fillvalue=fillvalue)
+
+    grupos_negocios = list(grouper(negocios_con_ofertas_activas, 3))
+    
+    # Filtra solo los negocios que son premium
+    negocios_premium = Negocio.objects.filter(premium=True)[:3]
+    
+    return render(request, 'core/home.html', {
+        'grupos_negocios': grupos_negocios,
+        'negocios_premium': negocios_premium,
+        'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY
+    })
 
 def contacto(request):
     return render(request, "core/contacto.html")
@@ -35,6 +50,9 @@ def negocios(request):
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
 
+def usuario_logueado(request):
+    return render(request, "core/usuario_logueado.html")
+
 def lista_negocios(request):
     negocios = Negocio.objects.all()  # pylint: disable=no-member  # 
     return render(request, 'core/negocios.html', {'negocios': negocios})
@@ -48,6 +66,20 @@ def negocios_por_categoria(request, categoria_id):
         'categorias': categorias,
         'categoria_seleccionada': categoria_seleccionada,
     })
+
+def negocios_con_ofertas_activas(request):
+    # Filtra solo las ofertas activas
+    ofertas_activas = Oferta.objects.filter(activa=True)  # pylint: disable=no-member
+    # Filtra los negocios que están asociados a ofertas activas
+    negocios = Negocio.objects.filter(oferta__in=ofertas_activas)  # pylint: disable=no-member
+
+    return render(request, 'core/negocios_con_ofertas.html', {
+        'negocios': negocios,
+        'ofertas_activas': ofertas_activas,
+    })
+
+
+
 
 def start_conversation(request):
     response = requests.get(f"{REPLIT_BOT_URL}/start")

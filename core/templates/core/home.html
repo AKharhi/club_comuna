@@ -24,63 +24,47 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="video ms-auto embed-responsive embed-responsive-16by9" style="flex: 3; max-width: 45%;"> 
+                <div class="video ms-auto embed-responsive embed-responsive-16by9" style="flex: 3; max-width: 50%;"> 
                     <!-- Video de YouTube -->
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/vG8C1jkyUig" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GVdLX0Jv_6Y" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 90%; height: 300px;"></iframe>
                 </div>
             </div>            
         </section>
 
-       <section class="offers bg-white py-5 text-center text-black">
+        <!-- Sección de Negocios con Ofertas Activas -->
+        <section class="offers bg-white py-5 text-center text-black">
             <div class="container">
                 <h2 class="text-center mb-4">Accede a Ofertas Exclusivas para Socios del "Club"</h2>
                 <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                      <!-- Primera diapositiva del carrusel -->
-                        <div class="carousel-item active">
+                        {% for grupo in grupos_negocios %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row">
-                                <!-- Parte izquierda: del banner -->
-                                <div class="col-md-9">
-                                    <img src="{% static 'core/images/carniceria.jpg' %}" class="d-block w-100" alt="Carnicería">
-                                    <div class="carousel-caption d-md-block text-start">
-                                        <p>Carnes Rojas - 15% dcto</p>
-                                    </div>
+                                {% for negocio in grupo %}
+                                {% if negocio %}
+                                <div class="col-md-4">
+                                    <div class="card h-100 text-center p-3 shadow-lg rounded hvr-grow" data-aos="fade-up">
+                                        {% if negocio.imagen %}
+                                            <img src="{{ negocio.imagen.url }}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                                        {% else %}
+                                            <img src="{% static 'core/images/default.jpg' %}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ negocio.nombre }}</h5>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
+                                            <p class="card-text"><i class="fas fa-tag"></i> Oferta: {{ negocio.oferta.nombre }}</p>
+                                            <p class="card-text">{{ negocio.oferta.descripcion }}</p>
+                                            <p class="card-text"><i class="fas fa-calendar-alt"></i> Desde el {{ negocio.oferta.fecha_inicio }}<br>Hasta el {{ negocio.oferta.fecha_fin }}</p>
+                                        </div>
+                                    </div>                                   
                                 </div>
-                                <!-- Parte derecha del banner -->
-                                <div class="col-md-3 d-flex align-items-stretch">
-                                    <div class="business-info d-flex flex-column justify-content-center" style="background: black; padding: 20px; color: white; border: 2px solid black;">
-                                        <h5>Carnicería ABC</h5>
-                                        <br>
-                                        <p>Dirección: Calle Verdadera 456</p>
-                                        <p>Horario: 10:00 AM - 8:00 PM</p>
-                                        <p>Teléfono: +56 xxxxxx</p>
-                                    </div>
-                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-
-                        <!-- Segunda diapositiva del carrusel -->
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <img src="{% static 'core/images/miniM.jpg' %}" class="d-block w-100" alt="Minimarket">
-                                    <div class="carousel-caption d-md-block text-start">
-                                        <p>Queso Gauda - $1990 1/4 </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 d-flex align-items-stretch">
-                                    <div class="business-info d-flex flex-column justify-content-center" style="background: black; padding: 20px; color: white; border: 2px solid black;">
-                                        <h5>Minimarket</h5>
-                                        <br>
-                                        <p>Dirección: Calle Chica 486</p>
-                                        <p>Horario: 10:00 AM - 8:00 PM</p>
-                                        <p>Teléfono: +56 xxxxx1</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        {% endfor %}
                     </div>
+                    <!-- Controles del carrusel -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Anterior</span>
@@ -90,16 +74,19 @@
                         <span class="visually-hidden">Siguiente</span>
                     </button>
                 </div>
+                <br>
+                <div class="text-center mt-4">
+                    <a href="{% url 'negocios_con_ofertas' %}" class="btn btn-danger">Ver todas las Ofertas</a>
+                </div>        
             </div>
-        </section>
+        </section>   
+        
 
         <section class="business-list bg-black py-5 text-white">
             <div class="container">
-                <h2 class="text-center mb-4">Conoce Negocios Locales Socios del "Club"</h2>
-
-                
+                <h2 class="text-center mb-4">Conoce Negocios Locales Socios del "Club"</h2>  
                 <div class="row g-4">
-                    {% for negocio in negocios|slice:":3" %}
+                    {% for negocio in negocios_premium %}
                         <div class="col-md-4">
                             <div class="card h-100 bg-light">
                                 {% if negocio.imagen %}
@@ -115,17 +102,14 @@
                             </div>
                         </div>
                     {% endfor %}
-                </div>
-                
-                    <!-- Más tarjetas de negocios aquí -->
-                </div>
+                </div>                
                 <br>
                 <div class="text-center mt-4">
-                    <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los negocios</a>
+                    <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los Negocios</a>
                 </div>                
             </div>
-
         </section>
+
         <section class="map-section py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Ubicación de Negocios</h2>
@@ -146,8 +130,8 @@
 
  <script
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
- defer
-></script>
+ defer>
+</script>
     <script src="{% static 'core/scripts.js' %}">
         
     </script>

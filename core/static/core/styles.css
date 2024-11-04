@@ -91,41 +91,63 @@ body {
     color:#030303
 }
 
+/* video home */
+@media (max-width: 576px) {
+    .business-list .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.card {
-    border-radius: 10px;
+    .business-list .content {
+        order: 1;
+        text-align: center;
+    }
+
+    .business-list .video {
+        order: 2;
+        width: 100%; /* Asegura que el video ocupe todo el ancho disponible */
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .business-list .video iframe {
+        width: 100%; /* Asegura que el iframe ocupe todo el ancho del contenedor */
+        height: auto; /* Ajusta la altura para mantener la proporción */
+    }
 }
 
-.card-title {
-    font-size: 1.5rem;
+/* banner */
+.offers .card {
+    background-color: #FF5733; /* Fondo naranja */
+    border: none; /* Opcional: quitar borde */
+    padding: 1rem; /* Reduce el padding interno de la tarjeta */
+    height: auto; /* Asegura que la tarjeta se adapte a menos contenido */
 }
 
-.carousel-inner img {
-    height: 300px;
-    object-fit: cover;
+.offers .card .card-title {
+    color: black; /* Asegura que el título sea negro */
+    font-size: 1.4em; /* Ajusta el tamaño del título si deseas que sea más pequeño */
+    margin-bottom: 0.5rem; /* Reduce el espacio inferior del título */
 }
 
-.carousel-caption {
-    position: absolute;
-    left: 0;
-    bottom: 30px; /* Ajuste de distancia desde la parte inferior */
-    width: 50%; /* Texto en la mitad izquierda */
-    background-color: rgba(0, 0, 0, 0.5); /* fondo semitransparente */
-    padding: 10px;
-    border-radius: 0 5px 5px 0; 
-    text-align: left; /* Texto alineado a la izquierda */
+.offers .card .card-text {
+    color: black; /* Asegura que el texto sea negro */
+    font-size: 1em; /* Reduce el tamaño del texto general en el card */
 }
 
-.carousel-business-name {
-    position: absolute;
-    top: 10px; /* Ajuste de posición */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1.2rem; /* Tamaño de fuente ajustable */
+.offers .card img {
+    height: 140px; /* Ajusta esta altura según lo que necesites */
+    object-fit: cover; /* Asegura que la imagen se recorte sin deformarse */
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la card */
+    border-top-left-radius: 10px; /* Opcional: redondea las esquinas superiores */
+    border-top-right-radius: 10px; /* Opcional: redondea las esquinas superiores */
+}
+
+.card-body {
+    font-size: 0.9em; /* Reduce el tamaño de la fuente al 90% del tamaño original */
+    line-height: 1.9; /* Reduce el espacio vertical entre las líneas */
+    padding: 0.4rem; /* Ajusta el relleno interno para hacer el contenido más compacto */
 }
 
 /* Flechas de navegación */

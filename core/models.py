@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from datetime import date
+<<<<<<< HEAD
 
 
 
@@ -14,7 +15,19 @@ class ClienteProfile(models.Model):
     def __str__(self):
         return f"{self.user.username} - Perfil de Cliente"
 
+=======
+>>>>>>> 9ebed20bfbd873ade2a95e1e8b430c934a93b7cf
 
+
+
+class ClienteProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    codigo_socio = models.CharField(max_length=10)
+    fecha_emision = models.DateField(default=date.today)
+    tarjeta_activa = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.user.username} - Perfil de Cliente"
 
 
 class Categoria(models.Model):
