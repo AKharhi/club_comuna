@@ -13,5 +13,5 @@ urlpatterns = [
     path('chat/send/', views.send_message, name='send_message'),
     path('como_unirse/', views.como_unirse, name='como_unirse'),
     path('accounts/', include('allauth.urls')),  # Incluye las URLs de allauth
-    path('negocios_con_ofertas/', views.negocios_con_ofertas_activas, name='negocios_con_ofertas')
+    path('negocios_con_ofertas_activas/', views.negocios_con_ofertas_activas, name='negocios_con_ofertas_activas')
 ]
