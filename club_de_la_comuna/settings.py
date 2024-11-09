@@ -62,7 +62,9 @@ MIDDLEWARE = [
 # ==============================================
 CORS_ALLOWED_ORIGINS = [
     "https://3280a653-bce3-4755-b076-9d26aea1d67b-00-1yju02xjv8g7k.spock.replit.dev",
-    "https://accounts.google.com"
+    "https://accounts.google.com",
+    "https://capstone-project-gu9k.com",
+    "https://informatica-aconcagua.cl"
 ]
 
 # ==============================================
