@@ -16,23 +16,30 @@
         </div>
 
         <!-- Lado derecho: Formulario de Inicio de Sesión -->
-          <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
+        <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
             <h2 class="mb-4">Inicia sesión con tu cuenta</h2>
             
             <form method="post" action="{% url 'account_login' %}" style="width: 80%;">
                 {% csrf_token %}
-                {{ form.as_p }}      <!-- Esto muestra el formulario de inicio de sesión -->
-                 <button type="submit" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 100%;">
+                {{ form.as_p }}  <!-- Esto muestra el formulario de inicio de sesión -->
+                <button type="submit" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 100%;">
                     Iniciar sesión
                 </button>
             </form>
-        
+
             <!-- Opción para iniciar sesión con Google -->
             <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
                 Continúa con Google
             </a>
 
+            <!-- Botón para registrarse -->
+            <p class="mb-3">¿No tienes una cuenta?</p>
+            <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
+                <img src="{% static 'core/images/signup_icon.png' %}" alt="Signup Icon" style="width: 20px; height: 20px;" class="me-2">
+                Regístrate aquí
+            </a>
+            
             <p class="mb-3">¿No tienes cuenta Google?</p>
             <a href="https://accounts.google.com/signup" target="_blank" class="btn btn-outline-primary d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
