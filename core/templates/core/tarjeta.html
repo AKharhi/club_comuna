@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+    <h1 class="text-center mb-4">Tu Tarjeta de Miembro</h1>
+    {% if image_url %}
+        <div class="card text-center p-3" style="background-color: #333; border-radius: 15px; width: 450px; height: 280px;">
+            <img src="{{ image_url }}" alt="Tarjeta de Miembro" class="img-fluid mb-3" style="width: 100%; border-radius: 10px;">
+            <!-- Botón de descarga -->
+            <p><a href="{% url 'descargar_tarjeta' %}" class="btn btn-warning">Descargar Tarjeta</a></p>
+        </div>
+    {% else %}
+        <p class="text-center">No se pudo generar la tarjeta. Inténtalo nuevamente.</p>
+    {% endif %}
+</div>
+
+
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
+defer>
+</script>
+<script src="{% static 'core/scripts.js' %}"></script>
+{% endblock %}
