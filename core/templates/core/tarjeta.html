@@ -4,19 +4,55 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
-    <h1 class="text-center mb-4">Tu Tarjeta de Miembro</h1>
-    {% if image_url %}
-        <div class="card text-center p-3" style="background-color: #333; border-radius: 15px; width: 450px; height: 280px;">
-            <img src="{{ image_url }}" alt="Tarjeta de Miembro" class="img-fluid mb-3" style="width: 100%; border-radius: 10px;">
-            <!-- Botón de descarga -->
-            <p><a href="{% url 'descargar_tarjeta' %}" class="btn btn-warning">Descargar Tarjeta</a></p>
+<main>
+    
+    <!-- Sección de bienvenida con fondo naranja degradado -->
+    <section class="welcome-header text-black py-5" style="background: linear-gradient(to right, #FF7F00, #FFB347);">
+        <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+            <h2 class="mb-3">¡Bienvenido <strong>{{ user.first_name }} {{ user.last_name }}</strong> al Club de la Comuna!</h2>
+            <br>
+            <p class="fs-5 text-black text-center">
+                Gracias por ser parte de nuestra comunidad.<br>
+                Presentando la siguiente tarjeta, podrás disfrutar de descuentos exclusivos en todos los establecimientos miembros de nuestro club.<br>
+                Úsala para obtener beneficios especiales y apoyar a los negocios locales que tanto apreciamos.
+            </p>
+            {% if image_url %}
+                <div class="card text-center p-3" style="background-color: #333; border-radius: 15px; width: 450px; height: 280px;">
+                    <img src="{{ image_url }}" alt="Tarjeta de Miembro" class="img-fluid mb-3" style="width: 100%; border-radius: 10px;">
+                    <!-- Botón de descarga -->
+                    <p><a href="{% url 'descargar_tarjeta' %}" class="btn" style="background-color: blue; color: white;">Descargar Tarjeta</a></p>
+                </div>
+            {% else %}
+                <p class="text-center">No se pudo generar la tarjeta. Inténtalo nuevamente.</p>
+            {% endif %}
         </div>
-    {% else %}
-        <p class="text-center">No se pudo generar la tarjeta. Inténtalo nuevamente.</p>
-    {% endif %}
-</div>
+    </section>
+    <!-- Instrucciones de Uso -->
+    <section class="usage-instructions bg-white py-5 text-center text-black">
+        <div class="container">
+            <h2 class="mb-4">Instrucciones de Uso</h2>
+            <p>• Presenta esta tarjeta virtual en el punto de venta de cualquier negocio socio del Club.</p>
+            <p>• Asegúrate de mostrar tu Código de Socio para validar el descuento.</p>
+            <p>• Disfruta de tus compras y de los ahorros.</p>
+            <p>Para ver la lista completa de negocios participantes y los descuentos que ofrecen, haz click aquí: <a href="{% url 'negocios' %}">Negocios Locales Socios del Club</a></p>
+        </div>
+    </section>
 
+    <!-- Términos y Condiciones -->
+    <section class="terms-conditions bg-black py-5 text-white text-center">
+        <div class="container">
+            <h2 class="mb-4">Términos y Condiciones</h2>
+            <p>• Solo válido en negocios afiliados al Club de la Comuna.</p>
+            <p>• Descuentos sujetos a disponibilidad en cada tienda.</p>
+            <p>• Cada negocio puede requerir la validación de los datos de la tarjeta virtual para aplicar los descuentos.</p>
+            <p class="mt-4">¡Gracias por apoyar a nuestra comunidad!</p>
+            <br>
+            <h3 class="mt-3">Atentamente,<br>Club de la Comuna</h3>
+        </div>
+    </section>
+
+
+<main>
 
 
 <script

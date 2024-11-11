@@ -196,7 +196,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # django-allauth CONFIGURATION
 # ==============================================
 SITE_ID = 3
-LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
+LOGIN_REDIRECT_URL = '/tarjeta'  # Redirige al inicio o donde prefieras
 LOGOUT_REDIRECT_URL = '/'
 
 # Configuración de django-allauth
@@ -213,6 +213,9 @@ SOCIALACCOUNT_PROVIDERS = {
         'SECRET': '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',
     }
 }
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 
 # ==============================================
 # LOGGING CONFIGURATION

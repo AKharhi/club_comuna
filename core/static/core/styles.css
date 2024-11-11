@@ -169,19 +169,25 @@ body {
 
 .carousel-control-prev,
 .carousel-control-next {
-    position: absolute;
     top: 100%; /* Ubicación de las flechas bajo la imagen */
     transform: translateY(-50%);
-    width: 50px; 
-    height: 50px; 
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 10px;
 }
 
 .carousel-control-prev {
-    left: 40%; /* Flecha a la izquierda */
+    left: 30%; /* Flecha a la izquierda */
 }
 
 .carousel-control-next {
-    right: 40%; /* Flecha a la derecha */
+    right: 30%; /* Flecha a la derecha */
 }
 
 
