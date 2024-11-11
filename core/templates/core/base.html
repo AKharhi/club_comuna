@@ -41,7 +41,11 @@
                     <!-- Mostrar el nombre de usuario si está autenticado -->
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <span class="btn text-white m-1">Bienvenido, {{ request.user.username }}</span>
+                            <span class="btn text-white m-1">Bienvenido, {{ request.user.first_name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Botón para ver la tarjeta -->
+                            <a class="btn btn-warning text-white m-1" href="{% url 'generar_tarjeta' %}">Mi Tarjeta</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-danger m-1" href="{% url 'account_logout' %}">Cerrar Sesión</a>
@@ -60,7 +64,6 @@
 <main style="margin-top: 120px;">
     <!-- Aquí va el contenido de tu página -->
 </main>
-
 
     {% block content %}
     {% endblock %}
@@ -93,9 +96,5 @@
         AOS.init();
     </script>
       
-
-
-    
 </body>
-
 </html>
