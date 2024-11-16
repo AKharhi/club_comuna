@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from core import views
+from django.contrib.auth.views import LogoutView
+from django.views.generic import TemplateView
+
+
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -16,5 +20,8 @@ urlpatterns = [
     path('negocios_con_ofertas/', views.negocios_con_ofertas_activas, name='negocios_con_ofertas'),
     path("tarjeta/", views.generar_tarjeta, name="generar_tarjeta"),
     path('descargar_tarjeta/', views.descargar_tarjeta, name='descargar_tarjeta'),
+    path('logout/success/', TemplateView.as_view(template_name='account/logout_success.html'), name='logout_success'),
+
+
 
 ]

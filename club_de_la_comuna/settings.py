@@ -195,7 +195,8 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # ==============================================
 SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/logout/success/'  # Redirige a una página personalizada
+  # Ajusta este valor al path correspondiente a tu template
 
 # Configuración de django-allauth
 ACCOUNT_EMAIL_REQUIRED = True
@@ -211,6 +212,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'SECRET': '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',
     }
 }
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # ==============================================
 # LOGGING CONFIGURATION
