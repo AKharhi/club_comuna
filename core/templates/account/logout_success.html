@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sesión Cerrada{% endblock %}
+
+{% block content %}
+<main class="logout-section py-5 d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <h2 class="mb-4">¡Sesión cerrada exitosamente!</h2>
+        <p>Gracias por visitarnos. Esperamos verte pronto.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Volver al inicio</a>
+    </div>
+</main>
+{% endblock %}

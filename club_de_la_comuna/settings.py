@@ -197,7 +197,8 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # ==============================================
 SITE_ID = 3
 LOGIN_REDIRECT_URL = '/tarjeta'  # Redirige al inicio o donde prefieras
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/logout/success/'  # Redirige a una página personalizada
+  # Ajusta este valor al path correspondiente a tu template
 
 # Configuración de django-allauth
 ACCOUNT_EMAIL_REQUIRED = True
