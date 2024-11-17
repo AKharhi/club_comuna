@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Negocios{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Filtro -->
+    <section class="business-list bg-black py-5 text-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Explora todas las Ofertas exclusivas del "Club"</h2>
+            <div class="d-flex flex-wrap justify-content-center mb-4">
+                <button class="btn btn-white m-1">Minimarkets</button>
+                <button class="btn btn-white m-1">Ferreterías</button>
+                <button class="btn btn-white m-1">Restaurantes</button>
+                <button class="btn btn-white m-1">Peluquerías</button>
+                <button class="btn btn-white m-1">Veterinarias</button>
+                <button class="btn btn-white m-1">Carnicerías</button>
+                <button class="btn btn-white m-1">Vestuario</button>
+                <button class="btn btn-white m-1">Verdulerías</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Página de Negocios con Ofertas Activas -->
+    <section class="offers bg-white py-5 text-center text-black">
+        <div class="container">
+            <div class="row">
+                {% for negocio in negocios %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center p-3 shadow-lg rounded hvr-grow" data-aos="fade-up">
+                        {% if negocio.imagen %}
+                      
+                            <img src="{{ negocio.imagen.url }}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                        {% else %}
+                            <img src="{% static 'core/images/default.jpg' %}" class="card-img-top rounded-top" alt="{{ negocio.nombre }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ negocio.nombre }}</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
+                            <p class="card-text"><i class="fas fa-tag"></i> Oferta: {{ negocio.oferta.nombre }}</p>
+                            <p class="card-text">{{ negocio.oferta.descripcion }}</p>
+                            <p class="card-text"><i class="fas fa-calendar-alt"></i> Desde el {{ negocio.oferta.fecha_inicio }}<br>Hasta el {{ negocio.oferta.fecha_fin }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
+        </div>
+    </section>
+</main>
+{% endblock %}

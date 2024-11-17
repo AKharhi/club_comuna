@@ -125,8 +125,9 @@ def descargar_tarjeta(request):
 REPLIT_BOT_URL = "https://a1e941e0-0052-4d88-931b-1a97ba107373-00-2dox5ng8dzsii.kirk.replit.dev/"  # URL del bot en Replit
 
 def home(request):
-   # Filtra los negocios que tienen ofertas activas
-    negocios_con_ofertas_activas = Negocio.objects.filter(oferta__activa=True)  # pylint: disable=no-member
+   # Filtra los primeros 6 negocios con ofertas activas para el banner
+    negocios_con_ofertas_activas = list(Negocio.objects.filter(oferta__activa=True)[:6])
+  # pylint: disable=no-member
     
     # Divide los negocios en grupos de tres para el banner
     def grouper(iterable, n, fillvalue=None):
@@ -160,9 +161,6 @@ def negocios(request):
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
 
-def usuario_logueado(request):
-    return render(request, "core/usuario_logueado.html")
-
 def lista_negocios(request):
     negocios = Negocio.objects.all()  # pylint: disable=no-member  # 
     return render(request, 'core/negocios.html', {'negocios': negocios})
@@ -178,12 +176,12 @@ def negocios_por_categoria(request, categoria_id):
     })
 
 def negocios_con_ofertas_activas(request):
-    # Filtra solo las ofertas activas
+     # Filtra todos los negocios con ofertas activas sin límite
     ofertas_activas = Oferta.objects.filter(activa=True)  # pylint: disable=no-member
     # Filtra los negocios que están asociados a ofertas activas
     negocios = Negocio.objects.filter(oferta__in=ofertas_activas)  # pylint: disable=no-member
 
-    return render(request, 'core/negocios_con_ofertas.html', {
+    return render(request, 'core/negocios_con_ofertas_activas.html', {
         'negocios': negocios,
         'ofertas_activas': ofertas_activas,
     })

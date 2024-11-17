@@ -62,7 +62,9 @@ MIDDLEWARE = [
 # ==============================================
 CORS_ALLOWED_ORIGINS = [
     "https://3280a653-bce3-4755-b076-9d26aea1d67b-00-1yju02xjv8g7k.spock.replit.dev",
-    "https://accounts.google.com"
+    "https://accounts.google.com",
+    "https://capstone-project-gu9k.com",
+    "https://informatica-aconcagua.cl"
 ]
 
 # ==============================================
@@ -194,7 +196,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # django-allauth CONFIGURATION
 # ==============================================
 SITE_ID = 3
-LOGIN_REDIRECT_URL = '/'  # Redirige al inicio o donde prefieras
+LOGIN_REDIRECT_URL = '/tarjeta'  # Redirige al inicio o donde prefieras
 LOGOUT_REDIRECT_URL = '/logout/success/'  # Redirige a una página personalizada
   # Ajusta este valor al path correspondiente a tu template
 
@@ -214,6 +216,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
 
 # ==============================================
 # LOGGING CONFIGURATION

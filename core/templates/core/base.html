@@ -51,10 +51,13 @@
         </div>
     </header>
 
-    <main style="margin-top: 120px;">
-        {% block content %}
-        {% endblock %}
-    </main>
+<!-- Asegúrate de agregar un margen superior en el contenido para que no quede oculto bajo el header fijo -->
+<main style="margin-top: 85px;">
+    <!-- Aquí va el contenido de tu página -->
+</main>
+
+    {% block content %}
+    {% endblock %}
 
     <footer class="bg-blackfoot text-white text-center py-3">
         <div class="social-footer mb-2">

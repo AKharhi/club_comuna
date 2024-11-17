@@ -12,7 +12,7 @@ h4 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700; /* Bold */
     font-size: 2rem; /* Ajuste de tamaño */
-    color: rgb(252, 252, 252);
+    color: grey;
 }
 
 h5 {
@@ -118,36 +118,46 @@ body {
 }
 
 /* banner */
+/* Estilo general para el banner y tarjetas */
 .offers .card {
-    background-color: #FF5733; /* Fondo naranja */
+    background-color: #ed8068; /* Fondo naranja */
     border: none; /* Opcional: quitar borde */
     padding: 1rem; /* Reduce el padding interno de la tarjeta */
-    height: auto; /* Asegura que la tarjeta se adapte a menos contenido */
+    height: 100%; /* Asegura que la tarjeta se adapte automáticamente */
+    max-width: 300px; /* Establece un ancho máximo para uniformidad */
+    margin: auto; /* Centra la tarjeta dentro de su contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.offers .card .card-title {
-    color: black; /* Asegura que el título sea negro */
-    font-size: 1.4em; /* Ajusta el tamaño del título si deseas que sea más pequeño */
-    margin-bottom: 0.5rem; /* Reduce el espacio inferior del título */
-}
-
-.offers .card .card-text {
-    color: black; /* Asegura que el texto sea negro */
-    font-size: 1em; /* Reduce el tamaño del texto general en el card */
-}
-
+/* Imagen dentro de la tarjeta */
 .offers .card img {
-    height: 140px; /* Ajusta esta altura según lo que necesites */
+    height: 150px; /* Ajusta esta altura según lo que necesites */
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
     object-fit: cover; /* Asegura que la imagen se recorte sin deformarse */
-    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la card */
     border-top-left-radius: 10px; /* Opcional: redondea las esquinas superiores */
     border-top-right-radius: 10px; /* Opcional: redondea las esquinas superiores */
 }
 
-.card-body {
-    font-size: 0.9em; /* Reduce el tamaño de la fuente al 90% del tamaño original */
-    line-height: 1.9; /* Reduce el espacio vertical entre las líneas */
-    padding: 0.4rem; /* Ajusta el relleno interno para hacer el contenido más compacto */
+/* Contenido de la tarjeta */
+.offers .card .card-body {
+    padding: 0.5rem; /* Ajusta el relleno interno para hacer el contenido más compacto */
+    font-size: 0.9em; /* Reduce el tamaño de la fuente */
+    line-height: 1.5; /* Controla el interlineado */
+}
+
+/* Título de la tarjeta */
+.offers .card .card-title {
+    color: black; /* Asegura que el título sea negro */
+    font-size: 1.2em; /* Ajusta el tamaño del título */
+    margin-bottom: 0.5rem; /* Reduce el espacio inferior del título */
+}
+
+/* Texto de la tarjeta */
+.offers .card .card-text {
+    color: black; /* Asegura que el texto sea negro */
+    font-size: 0.9em; /* Reduce el tamaño del texto */
 }
 
 /* Flechas de navegación */
@@ -159,20 +169,27 @@ body {
 
 .carousel-control-prev,
 .carousel-control-next {
-    position: absolute;
     top: 100%; /* Ubicación de las flechas bajo la imagen */
     transform: translateY(-50%);
-    width: 50px; 
-    height: 50px; 
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 10px;
 }
 
 .carousel-control-prev {
-    left: 40%; /* Flecha a la izquierda */
+    left: 30%; /* Flecha a la izquierda */
 }
 
 .carousel-control-next {
-    right: 40%; /* Flecha a la derecha */
+    right: 30%; /* Flecha a la derecha */
 }
+
 
 .social-media {
     text-align: center; 

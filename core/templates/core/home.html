@@ -65,18 +65,19 @@
                         {% endfor %}
                     </div>
                     <!-- Controles del carrusel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+                    <div class="carousel-controls text-center mt-3">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
                 </div>
-                <br>
                 <div class="text-center mt-4">
-                    <a href="{% url 'negocios_con_ofertas' %}" class="btn btn-danger">Ver todas las Ofertas</a>
+                    <a href="{% url 'negocios_con_ofertas_activas' %}" class="btn btn-danger">Ver todas las Ofertas</a>
                 </div>        
             </div>
         </section>   
@@ -103,7 +104,6 @@
                         </div>
                     {% endfor %}
                 </div>                
-                <br>
                 <div class="text-center mt-4">
                     <a href="{% url 'negocios' %}" class="btn btn-danger">Ver todos los Negocios</a>
                 </div>                
