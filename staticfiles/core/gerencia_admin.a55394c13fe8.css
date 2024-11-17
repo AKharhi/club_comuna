@@ -1,0 +1,34 @@
+/* Cambiar los colores de fondo, encabezados y botones */
+body {
+    background-color: #FFFAE5; /* Fondo claro para combinar con el logo */
+}
+
+.model-list-title, .module h2, #header h1 {
+    color: #FFA500; /* Naranja del logo */
+    font-family: 'Arial', sans-serif;
+}
+
+.module {
+    background-color: #FFF4CC; /* Fondo suave acorde al logo */
+    border: 2px solid #FFA500; /* Bordes naranja */
+}
+
+button, .button {
+    background-color: #FFB400; /* Botones con naranja del logo */
+    color: #FFFFFF; /* Texto blanco */
+    border: none;
+}
+
+button:hover, .button:hover {
+    background-color: #FFA500; /* Naranja más oscuro para hover */
+}
+
+#header {
+    background-color: #FF4500; /* Rojo anaranjado */
+    color: white;
+}
+
+footer {
+    background-color: #FFFAE5;
+    color: #FF4500;
+}
