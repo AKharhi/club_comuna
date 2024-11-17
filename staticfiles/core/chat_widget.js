@@ -85,7 +85,7 @@
     }
 
     function startConversation() {
-        console.log("Iniciando conversación...");
+        //console.log("Iniciando conversación...");
         startConversationButton.disabled = true; // Deshabilitar el botón
         startConversationButton.classList.add('button-disabled'); // Añadir clase de deshabilitado
 
@@ -99,12 +99,12 @@
             }
         })
             .then(response => {
-                console.log("Respuesta de /start:", response);
+                //console.log("Respuesta de /start:", response);
                 if (!response.ok) throw new Error("Error al obtener el thread_id");
                 return response.json();
             })
             .then(data => {
-                console.log("Datos obtenidos de /start:", data);
+                //console.log("Datos obtenidos de /start:", data);
                 threadID = data.thread_id;
                 addMessageToChat('Asistente', '¿En qué te puedo ayudar? 😊');
                 showChatInput();
