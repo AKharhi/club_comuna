@@ -152,12 +152,6 @@ def elclub(request):
     return render(request, "core/elclub.html")
 
 
-def negocios(request):
-    return render(request, "core/negocios.html")
-
-#def inicio_sesion(request):
- #   return render(request, "account/login.html")  allauth maneja la lógica
-
 def como_unirse(request):
     return render(request, "core/como_unirse.html")
 
@@ -165,25 +159,39 @@ def lista_negocios(request):
     negocios = Negocio.objects.all()  # pylint: disable=no-member  # 
     return render(request, 'core/negocios.html', {'negocios': negocios})
 
-def negocios_por_categoria(request, categoria_id):
-    categorias = Categoria.objects.all()   # pylint: disable=no-member  # 
-    categoria_seleccionada = get_object_or_404(Categoria, id=categoria_id)
-    negocios = Negocio.objects.filter(categoria=categoria_seleccionada)  # pylint: disable=no-member  # 
+def negocios_por_categoria(request, categoria_id=None):
+    categorias = Categoria.objects.all()  # Obtiene todas las categorías
+    categoria_seleccionada = None
+
+    if categoria_id:  # Si se proporciona un ID de categoría
+        categoria_seleccionada = get_object_or_404(Categoria, id=categoria_id)
+        negocios = Negocio.objects.filter(categoria=categoria_seleccionada)  # Filtra los negocios
+    else:
+        negocios = Negocio.objects.all()  # Muestra todos los negocios si no se selecciona una categoría
+
     return render(request, 'core/negocios.html', {
         'negocios': negocios,
         'categorias': categorias,
         'categoria_seleccionada': categoria_seleccionada,
     })
 
-def negocios_con_ofertas_activas(request):
-     # Filtra todos los negocios con ofertas activas sin límite
-    ofertas_activas = Oferta.objects.filter(activa=True)  # pylint: disable=no-member
-    # Filtra los negocios que están asociados a ofertas activas
-    negocios = Negocio.objects.filter(oferta__in=ofertas_activas)  # pylint: disable=no-member
+
+
+
+def negocios_con_ofertas_activas(request, categoria_id=None):
+    categorias = Categoria.objects.all()  # Obtener todas las categorías
+    categoria_seleccionada = None
+
+    if categoria_id:  # Si se selecciona una categoría
+        categoria_seleccionada = get_object_or_404(Categoria, id=categoria_id)
+        negocios = Negocio.objects.filter(categoria=categoria_seleccionada, oferta__activa=True)
+    else:  # Si no se selecciona categoría, mostrar todas las ofertas activas
+        negocios = Negocio.objects.filter(oferta__activa=True)
 
     return render(request, 'core/negocios_con_ofertas_activas.html', {
         'negocios': negocios,
-        'ofertas_activas': ofertas_activas,
+        'categorias': categorias,
+        'categoria_seleccionada': categoria_seleccionada,
     })
 
 

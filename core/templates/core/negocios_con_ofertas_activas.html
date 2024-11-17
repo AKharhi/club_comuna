@@ -7,20 +7,14 @@
 <main>
     <!-- Filtro -->
     <section class="business-list bg-black py-5 text-white">
-        <div class="container">
-            <h2 class="text-center mb-4">Explora todas las Ofertas exclusivas del "Club"</h2>
-            <div class="d-flex flex-wrap justify-content-center mb-4">
-                <button class="btn btn-white m-1">Minimarkets</button>
-                <button class="btn btn-white m-1">Ferreterías</button>
-                <button class="btn btn-white m-1">Restaurantes</button>
-                <button class="btn btn-white m-1">Peluquerías</button>
-                <button class="btn btn-white m-1">Veterinarias</button>
-                <button class="btn btn-white m-1">Carnicerías</button>
-                <button class="btn btn-white m-1">Vestuario</button>
-                <button class="btn btn-white m-1">Verdulerías</button>
-            </div>
+        <div class="d-flex flex-wrap justify-content-center mb-4">
+            {% for categoria in categorias %}
+                <button class="btn btn-dark m-1 categoria-btn" data-categoria-id="{{ categoria.id }}">
+                    {{ categoria.nombre }}
+                </button>
+            {% endfor %}
+            <button class="btn btn-dark m-1 categoria-btn" data-categoria-id="">Todos</button>
         </div>
-    </section>
 
     <!-- Página de Negocios con Ofertas Activas -->
     <section class="offers bg-white py-5 text-center text-black">
@@ -44,7 +38,10 @@
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <p class="text-center">No hay negocios con ofertas activas disponibles.</p>
                 {% endfor %}
+                
             </div>
         </div>
 
@@ -53,4 +50,17 @@
         </div>
     </section>
 </main>
+<!-- Script de filtrado -->
+<script>
+    document.querySelectorAll(".categoria-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const categoriaId = this.getAttribute("data-categoria-id");
+            if (categoriaId) {
+                window.location.href = `/negocios_con_ofertas_activas/${categoriaId}/`;
+            } else {
+                window.location.href = "/negocios_con_ofertas_activas/";
+            }
+        });
+    });
+</script>
 {% endblock %}

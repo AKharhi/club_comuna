@@ -101,3 +101,16 @@ function createMarker(place) {
 
 window.initMap = initMap;
 
+document.getElementById("filtrar-btn").addEventListener("click", function() {
+  var categoriaId = document.getElementById("categoria-select").value;
+  if (categoriaId) {
+      window.location.href = "/negocios/categoria/" + categoriaId + "/";
+  } else {
+      window.location.href = "/negocios/";
+  }
+});
+
+
+
+
+
