@@ -138,6 +138,9 @@ def home(request):
     
     # Filtra solo los negocios que son premium
     negocios_premium = Negocio.objects.filter(premium=True)[:3]
+
+    # Obtener todos los negocios con su dirección y nombre
+    negocios = Negocio.objects.values('nombre', 'direccion')
     
     return render(request, 'core/home.html', {
         'grupos_negocios': grupos_negocios,
@@ -236,3 +239,5 @@ def contacto(request):
         form = ContactForm()
 
     return render(request, 'core/contacto.html', {'form': form, 'form_submitted': form_submitted})
+
+
