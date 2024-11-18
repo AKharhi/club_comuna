@@ -6,7 +6,7 @@ from django.contrib.admin import AdminSite
 class GerenciaAdmin(AdminSite): #clase personalizada que hereda de Admin para el mantenedor de la app
     site_header = "Administración del Club de la Comuna"
     site_title = "Panel de Negocios y Clientes"
-    index_title = "Bienvenido al Panel de Administración del Club de la Comuna"
+    index_title = "Bienvenido al Panel de Administración"
 
 gerencia_admin_site = GerenciaAdmin(name='gerencia_admin') #Sólo para el mantenedor de la app.
 
@@ -16,6 +16,7 @@ class NegocioAdmin(admin.ModelAdmin):
     list_filter = ('created', 'updated')  # Filtros en el admin
     search_fields = ('nombre', 'direccion', 'telefono', 'email')  # Búsqueda rápida
     readonly_fields = ('created', 'updated')  # Campos de solo lectura
+    list_filter = ('nombre','direccion')
 
     # Método para mostrar la imagen en la vista del admin
     def ver_imagen(self, obj):

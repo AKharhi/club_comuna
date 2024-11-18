@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'admin_interface',
+    'colorfield',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -44,6 +46,10 @@ INSTALLED_APPS = [
     "corsheaders",  # Para manejo de CORS, útil para APIs
     'django_extensions',
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
