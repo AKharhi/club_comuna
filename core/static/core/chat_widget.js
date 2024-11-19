@@ -106,7 +106,18 @@
             .then(data => {
                 //console.log("Datos obtenidos de /start:", data);
                 threadID = data.thread_id;
-                addMessageToChat('Asistente', '¿En qué te puedo ayudar? 😊');
+                // Mostrar los mensajes de manera separada con pequeños retrasos
+            addMessageToChat('Asistente', 'Hola 😊');
+            setTimeout(() => {
+                addMessageToChat('Asistente', '¿En qué te puedo ayudar?');
+            }, 1000);
+            setTimeout(() => {
+                addMessageToChat('Asistente', '¿Quieres saber cómo unirte al Club?');
+            }, 2000);
+            setTimeout(() => {
+                addMessageToChat('Asistente', '¿Buscas algún negocio en particular?');
+            }, 3000);
+            
                 showChatInput();
                 setTimeout(() => {
                     startConversationButton.disabled = false; // Habilitar el botón después de 3 segundos
