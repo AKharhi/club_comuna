@@ -119,11 +119,6 @@ def descargar_tarjeta(request):
         return HttpResponse(f"Error al descargar la tarjeta: {e}", status=500)
 
 
-
-
-
-REPLIT_BOT_URL = "https://a1e941e0-0052-4d88-931b-1a97ba107373-00-2dox5ng8dzsii.kirk.replit.dev/"  # URL del bot en Replit
-
 def home(request):
    # Filtra los primeros 6 negocios con ofertas activas para el banner
     negocios_con_ofertas_activas = list(Negocio.objects.filter(oferta__activa=True)[:6])
@@ -194,8 +189,8 @@ def negocios_con_ofertas_activas(request, categoria_id=None):
         'categoria_seleccionada': categoria_seleccionada,
     })
 
-
-
+#Vista2 Chatbot Clubcito (Ventana)
+REPLIT_BOT_URL = "https://a1e941e0-0052-4d88-931b-1a97ba107373-00-2dox5ng8dzsii.kirk.replit.dev/"  # URL del bot en Replit
 
 def start_conversation(request):
     response = requests.get(f"{REPLIT_BOT_URL}/start")
