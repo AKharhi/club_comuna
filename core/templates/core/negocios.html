@@ -15,7 +15,7 @@
             <button class="btn btn-dark m-1 categoria-btn" data-categoria-id="">Todos</button>
         </div>
 
-            <div class="row g-4">
+            <div class="row g-4 px-5">
                 <!-- Itera sobre todos los negocios pasados desde la vista -->
                 {% for negocio in negocios %}
                 <div class="col-md-4">
@@ -33,17 +33,18 @@
                             <p class="card-text">{{ negocio.descripcion }}</p>
                             <p class="card-text">Dirección: {{ negocio.direccion }}</p>
                         
-                            <div class="social-media mt-3">
-                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                    <i class="fab fa-facebook-f"></i> Facebook
+                            <div class="social-media mt-3 d-flex justify-content-between ">
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-facebook-f me-2"></i> Facebook
                                 </a>
-                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                    <i class="fab fa-whatsapp"></i> Whatsapp
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-whatsapp me-2"></i> Whatsapp
                                 </a>
-                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                    <i class="fab fa-instagram"></i> Instagram
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-instagram me-2"></i> Instagram
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -73,5 +74,30 @@
             }
         });
     });
+</script>
+<section class="map-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Ubicación de Negocios</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </div>
+</section> 
+
+<div id="map"></div>
+  
+
+</main> 
+<!-- 
+
+
+-->
+
+
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
+defer>
+</script>
+<script src="{% static 'core/scripts.js' %}">
+
 </script>
 {% endblock %}
