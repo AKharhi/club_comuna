@@ -67,6 +67,10 @@ class Negocio(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    latitud = models.FloatField(null=True, blank=True)
+    longitud = models.FloatField(null=True, blank=True)
+
 
 def __str__(self):
     return f"{self.nombre} - {self.categoria.nombre} - {self.oferta.activa}"  # pylint: disable=no-member

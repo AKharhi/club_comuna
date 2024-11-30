@@ -35,7 +35,8 @@ mccabe==0.7.0
 packaging==24.1
 pillow==10.4.0
 platformdirs==4.3.6
-psycopg2==2.9.9
+psycopg2==2.9.10
+psycopg2-binary==2.9.10
 pycparser==2.22
 pydotplus==2.0.2
 PyJWT==2.9.0
