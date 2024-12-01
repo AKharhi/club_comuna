@@ -236,3 +236,4 @@ def contacto(request):
     return render(request, 'core/contacto.html', {'form': form, 'form_submitted': form_submitted})
 
 
+

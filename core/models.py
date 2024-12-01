@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from datetime import date
-
+from core.utils import obtener_coordenadas
 
 
 
@@ -69,6 +69,15 @@ class Negocio(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    latitud = models.FloatField(null=True, blank=True)
+    longitud = models.FloatField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        # Si no se han establecido las coordenadas, intenta obtenerlas
+        if not self.latitud or not self.longitud:
+            self.latitud, self.longitud = obtener_coordenadas(self.direccion)
+        super().save(*args, **kwargs)
    
 
 
