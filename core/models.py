@@ -40,10 +40,10 @@ class Oferta(models.Model):
 
 
 class Negocio(models.Model):
+
     nombre = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
-    latitud = models.FloatField(null=True, blank=True)
-    longitud = models.FloatField(null=True, blank=True)
+  
     # Horario de Lunes a Viernes
     apertura_lunes_viernes = models.TimeField(null=True, blank=True)
     cierre_lunes_viernes = models.TimeField(null=True, blank=True)
@@ -69,8 +69,7 @@ class Negocio(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    latitud = models.FloatField(null=True, blank=True)
-    longitud = models.FloatField(null=True, blank=True)
+   
 
 
 def __str__(self):

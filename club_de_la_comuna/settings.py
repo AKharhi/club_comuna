@@ -215,7 +215,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
+        'AUTH_PARAMS': {'access_type': 'online', 'prompt': 'select_account'},
         'CLIENT_ID': '200853372326-g42lob8cskpnuu30e4cdbo4phgcu9jl5',
         'SECRET': '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',
     }
