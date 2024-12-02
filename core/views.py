@@ -24,8 +24,8 @@ def generar_tarjeta(request):
         return HttpResponse("No se pudo obtener el perfil del cliente", status=404)
 
     # Configuración del fondo y los colores
-    fondo_color = (50, 50, 50)  # Gris oscuro
-    texto_color = (255, 140, 0)  # Naranja
+    fondo_color = (255, 140, 0)  # Naranja 
+    texto_color = (50, 50, 50)  # Gris oscuro
 
     # Crear una imagen en modo RGBA para permitir transparencia
     width, height = 450, 280
@@ -34,7 +34,7 @@ def generar_tarjeta(request):
     # Crear una máscara para aplicar bordes redondeados
     mask = Image.new("L", (width, height), 0)
     draw_mask = ImageDraw.Draw(mask)
-    draw_mask.rounded_rectangle([(0, 0), (width, height)], radius=30, fill=255)  # Ajusta el radio de redondeo
+    draw_mask.rounded_rectangle([(0, 0), (width, height)], radius=20, fill=250)  # Ajusta el radio de redondeo
 
     # Aplicar la máscara para redondear las esquinas de la imagen
     img.putalpha(mask)

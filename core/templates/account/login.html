@@ -9,14 +9,12 @@
     <section class="login-section d-flex">
         <!-- Lado izquierdo: Información del Club -->
         <div class="club-info d-flex flex-column align-items-center justify-content-center text-white p-5" style="flex: 1; background: linear-gradient(to bottom, #333, #555);">
-            <p class="text-center fs-4 mb-5">Obtén tu Tarjeta Virtual para acceder a los <strong>BENEFICIOS</strong> exclusivos del Club.</p>
-            <img src="{% static 'core/images/tarjeta_virtual.jpg' %}" alt="Icono Club" style="width: 205px; height: 150px;">
+            <p class="text-center fs-4 mb-5">Inicia sesión para obtener tu Tarjeta Virtual y acceder a los <strong>beneficios</strong> exclusivos del Club.</p>
+            <img src="{% static 'core/images/tarjeta_virtual.png' %}" alt="Icono Club" style="width: 350px; height: 220px;">
         </div>
-
         <!-- Lado derecho: Formulario de Inicio de Sesión -->
         <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
             <h2 class="mb-4">Inicia sesión</h2>
-                       
             <!-- Opción para iniciar sesión con Google -->
             <a href="{% provider_login_url 'google' %}?prompt=select_account" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
                 <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
