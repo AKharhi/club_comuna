@@ -19,54 +19,47 @@
 })()
 
 let map;
-let service;
-let infowindow;
+let markers = [];
 
+// Inicializar el mapa
 function initMap() {
-  // Coordenadas de Macul, Santiago como valor por defecto
-  const maculCenter = new google.maps.LatLng(-33.4928, -70.6057);
-
-  infowindow = new google.maps.InfoWindow();
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: maculCenter,
-    zoom: 12,
-  });
-
-  // Intentar obtener la ubicación actual del usuario
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        map.setCenter(userLocation);
-        map.setZoom(14); // Ajustar el nivel de zoom si se necesita
-      },
-      () => {
-        console.error("No se pudo obtener la ubicación del usuario.");
-      }
-    );
-  } else {
-    console.error("Geolocalización no es compatible con este navegador.");
-  }
-
-  // Ubicaciones a marcar en el mapa
-  const locations = [
-    { query: "Av. Macul 3226, Santiago, Chile", fields: ["name", "geometry"] },
-    { query: "Enrique Molina 4411, Macul, Región Metropolitana", fields: ["name", "geometry"] },
-  ];
-
-  service = new google.maps.places.PlacesService(map);
-
-  locations.forEach((location) => {
-    service.findPlaceFromQuery(location, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        createMarker(results[0]); // Crear marcador para cada resultado
-      }
+    const defaultLocation = { lat: -33.447487, lng: -70.673676 }; // Ubicación inicial
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: defaultLocation,
+        zoom: 12,
     });
-  });
 }
+
+// Función para agregar un marcador al mapa
+function addMarker(lat, lng, title) {
+    const marker = new google.maps.Marker({
+        position: { lat, lng },
+        map: map,
+        title: title,
+    });
+    markers.push(marker);
+    map.setCenter({ lat, lng });
+    map.setZoom(16); // Acercar el mapa
+}
+
+// Manejar clics en las direcciones
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".direccion-link").forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Evitar redirección
+            const lat = parseFloat(this.dataset.lat);
+            const lng = parseFloat(this.dataset.lng);
+            const title = this.textContent.trim();
+
+            if (!isNaN(lat) && !isNaN(lng)) {
+                addMarker(lat, lng, title);
+            } else {
+                console.error("Coordenadas inválidas:", lat, lng);
+            }
+        });
+    });
+});
+
 
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
