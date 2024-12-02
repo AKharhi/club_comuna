@@ -87,7 +87,7 @@
     </div>
 </section> 
 
-
+<div id="map"></div>
   
 
 </main> 
@@ -99,15 +99,11 @@
 
 
 <script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=marker&v=weekly"
-async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
 defer>
 </script>
-
-
-
-
 <script src="{% static 'core/scripts.js' %}">
 
 </script>
+
 {% endblock %}
