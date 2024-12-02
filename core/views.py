@@ -62,7 +62,7 @@ def generar_tarjeta(request):
 
     # Cargar una fuente para el texto (aumentada en 2 puntos)
     try:
-        font = ImageFont.truetype("arial.ttf", 17)  # Tamaño de fuente aumentado a 17
+        font = ImageFont.truetype("arial.ttf", 18)  # Tamaño de fuente aumentado a 18
     except IOError:
         font = ImageFont.load_default()
 
