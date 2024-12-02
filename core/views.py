@@ -167,14 +167,12 @@ def negocios_por_categoria(request, categoria_id=None):
     else:
         negocios = Negocio.objects.all()  # Muestra todos los negocios si no se selecciona una categoría
 
-     # Convertir el QuerySet a una lista de diccionarios
-    negocios_data = list(negocios.values('id', 'nombre', 'descripcion', 'latitud', 'longitud', 'imagen', 'direccion'))
     return render(request, 'core/negocios.html', {
-        'negocios_data': negocios_data,
         'negocios': negocios,
         'categorias': categorias,
         'categoria_seleccionada': categoria_seleccionada,
     })
+
 
 
 
@@ -236,6 +234,5 @@ def contacto(request):
         form = ContactForm()
 
     return render(request, 'core/contacto.html', {'form': form, 'form_submitted': form_submitted})
-
 
 

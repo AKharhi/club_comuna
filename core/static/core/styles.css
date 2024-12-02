@@ -305,6 +305,63 @@ p {
   
   
 
+/* Estilo general del formulario */
+.contact {
+    background-color: #f8f9fa; /* Fondo suave */
+}
+
+.contact .form-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.contact .form-control {
+    border-radius: 12px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 12px 15px;
+    font-size: 1rem;
+    background-color: #f1f1f1;
+    transition: border-color 0.3s ease;
+}
+
+.contact .form-control:focus {
+    border-color: #007bff; /* Color al enfocar */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Resaltar al hacer foco */
+}
+
+.contact .invalid-feedback {
+    font-size: 0.9rem;
+    color: #dc3545; /* Color de error */
+}
+
+.contact .btn {
+    background-color: #007bff;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2); /* Sombra suave */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact .btn:hover {
+    background-color: #0056b3; /* Efecto hover */
+    box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3);
+}
+
+.contact .mb-4 {
+    margin-bottom: 30px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
 
 
 

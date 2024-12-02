@@ -3,17 +3,14 @@
 
 {% block title %}Contacto{% endblock %}
 
-
 {% block content %}
-<section class="contact py-5" style="background-color: #FF8A70;">
+<section class="contact py-5" style="background-color: #c9d2dc5d;">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="p-4 rounded shadow-sm" style="background-color: #ffffff; border: 2px solid #ddd;">
-                    <!-- Título -->
-                    <h2 class="text-center mb-4">Contáctanos</h2>
-                    
-                    <!-- Mostrar mensaje de éxito si el formulario se envió correctamente -->
+            <div class="col-md-8 col-lg-6">
+                <div class="p-4 rounded shadow-lg" style="background-color: #ffffff;">
+                    <h2 class="text-center mb-4" style="color: #2a2a2a;">Contáctanos</h2>
+
                     {% if messages %}
                         <div class="alert alert-success" role="alert">
                             {% for message in messages %}
@@ -22,63 +19,65 @@
                         </div>
                     {% endif %}
 
-                    <!-- Mostrar el formulario solo si no ha sido enviado -->
                     {% if not form_submitted %}
-                        <p class="text-center mb-5" style="max-width: 100%; font-size: 1.1rem;">
-                            Si tienes alguna pregunta, comentario o necesitas más información, por favor completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.
+                        <p class="text-center mb-5" style="font-size: 1.1rem; color: #555;">
+                            Si quieres saber cómo ser parte del club, tener más información de tu tarjeta virtual o dejarnos algún comentario, por favor completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.
                         </p>
 
                         <form method="post" class="needs-validation" novalidate>
                             {% csrf_token %}
+                            
                             <!-- Campo Nombre -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
                                 {{ form.nombre }}
                                 <div class="invalid-feedback">
                                     Por favor, ingresa tu nombre.
                                 </div>
                             </div>
-                            
+
                             <!-- Campo Apellido -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="apellido" class="form-label">Apellido <span class="text-danger">*</span></label>
                                 {{ form.apellido }}
                                 <div class="invalid-feedback">
                                     Por favor, ingresa tu apellido.
                                 </div>
                             </div>
-                            
+
                             <!-- Campo Celular -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="celular" class="form-label">Celular <span class="text-danger">*</span></label>
                                 {{ form.celular }}
                                 <div class="invalid-feedback">
                                     Por favor, ingresa un número de celular válido.
                                 </div>
                             </div>
-                            
+
                             <!-- Campo Correo Electrónico -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="email" class="form-label">Correo Electrónico <span class="text-danger">*</span></label>
                                 {{ form.email }}
                                 <div class="invalid-feedback">
                                     Por favor, ingresa un correo electrónico válido.
                                 </div>
                             </div>
-                            
+
                             <!-- Campo Comentario -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="comentario" class="form-label">Comentario <span class="text-danger">*</span></label>
                                 {{ form.comentario }}
                                 <div class="invalid-feedback">
                                     Por favor, ingresa un comentario.
                                 </div>
                             </div>
-                            
-                            <!-- Botón Enviar -->
+
                             <div class="text-center">
-                                <button type="submit" class="btn btn-danger btn-lg px-5 py-3">Enviar Mensaje</button>
+                                <button type="submit" class="btn btn-primary btn-sm px-4 py-2 mt-3" style="border-radius: 30px; background-color: #007bff; border: none;">
+                                    Enviar Mensaje
+                                </button>
                             </div>
+                            
                         </form>
                     {% endif %}
                 </div>
@@ -86,6 +85,4 @@
         </div>
     </div>
 </section>
-
-
 {% endblock %}
