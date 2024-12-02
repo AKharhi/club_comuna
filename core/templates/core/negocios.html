@@ -31,8 +31,13 @@
                         <div class="card-body">
                             <h3 class="card-title">{{ negocio.nombre }}</h3>
                             <p class="card-text">{{ negocio.descripcion }}</p>
-                            <p class="card-text">Dirección: {{ negocio.direccion }}</p>
-                        
+                            <p class="card-text">
+                                Dirección: 
+                                <a href="#" class="direccion-link" data-lat="{{ negocio.latitud|floatformat:6 }}" data-lng="{{ negocio.longitud|floatformat:6 }}">
+                                    {{ negocio.direccion }}
+                                </a>
+                                
+                            </p>                        
                             <div class="social-media mt-3 d-flex justify-content-between ">
                                 <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
                                     <i class="fab fa-facebook-f me-2"></i> Facebook
@@ -100,4 +105,5 @@ defer>
 <script src="{% static 'core/scripts.js' %}">
 
 </script>
+
 {% endblock %}
