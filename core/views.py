@@ -25,7 +25,7 @@ def generar_tarjeta(request):
 
     # Configuración del fondo y los colores
     fondo_color = (255, 140, 0)  # Naranja 
-    texto_color = (50, 50, 50)  # Gris oscuro
+    texto_color = (0, 0, 0)  # Negro
 
     # Crear una imagen en modo RGBA para permitir transparencia
     width, height = 450, 280
@@ -46,20 +46,32 @@ def generar_tarjeta(request):
 
     logo = Image.open(logo_path).convert("RGBA")
     logo = logo.resize((100, 100))
+    
+    # Crear un marco gris oscuro para el logo
+    frame_color = (64, 64, 64)  # Gris oscuro
+    frame_size = 2  # Grosor del marco
+    frame_x0, frame_y0 = 175 - frame_size, 20 - frame_size
+    frame_x1, frame_y1 = 175 + 100 + frame_size, 20 + 100 + frame_size
+    
+    # Dibujar el marco gris oscuro
+    draw = ImageDraw.Draw(img)
+    draw.ellipse([frame_x0, frame_y0, frame_x1, frame_y1], fill=frame_color)
+    
+    # Pegar el logo en el centro
     img.paste(logo, (175, 20), logo)  # Centrar el logotipo
 
-    # Cargar una fuente para el texto
+    # Cargar una fuente para el texto (aumentada en 2 puntos)
     try:
-        font = ImageFont.truetype("arial.ttf", 16)
+        font = ImageFont.truetype("arial.ttf", 17)  # Tamaño de fuente aumentado a 17
     except IOError:
         font = ImageFont.load_default()
 
     # Dibujar la información del usuario
     draw = ImageDraw.Draw(img)
-    draw.text((20, 140), f"Nombre del Cliente: {user.first_name} {user.last_name}", fill=texto_color, font=font)
-    draw.text((20, 170), f"Correo Verificado: {user.email}", fill=texto_color, font=font)
-    draw.text((20, 200), f"Código de Socio: {profile.codigo_socio}", fill=texto_color, font=font)
-    draw.text((20, 230), f"Fecha Emisión: {profile.fecha_emision}", fill=texto_color, font=font)
+    draw.text((20, 150), f"Nombre del Cliente: {user.first_name} {user.last_name}", fill=texto_color, font=font)
+    draw.text((20, 180), f"Correo Verificado: {user.email}", fill=texto_color, font=font)
+    draw.text((20, 210), f"Código de Socio: {profile.codigo_socio}", fill=texto_color, font=font)
+    draw.text((20, 240), f"Fecha Emisión: {profile.fecha_emision}", fill=texto_color, font=font)
 
     # Convertir la imagen a bytes
     buffer = BytesIO()
@@ -89,6 +101,7 @@ def generar_tarjeta(request):
 
     # Pasar la URL al contexto para mostrarla en el template
     return render(request, 'core/tarjeta.html', {'image_url': image_url})
+
 
 
 
