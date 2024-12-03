@@ -32,7 +32,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ negocio.nombre }}</h5>
                             <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
-                            <p class="card-text"><i class="fas fa-tag"></i> Oferta: {{ negocio.oferta.nombre }}</p>
+                            <p class="card-text"><i class="fas fa-shopping-cart"></i> Oferta: {{ negocio.oferta.nombre }}</p>
+                            <p class="card-text"><i class="fas fa-tag"></i> Precio: ${{ negocio.oferta.precio }}.-</p>
                             <p class="card-text">{{ negocio.oferta.descripcion }}</p>
                             <p class="card-text"><i class="fas fa-calendar-alt"></i> Desde el {{ negocio.oferta.fecha_inicio }}<br>Hasta el {{ negocio.oferta.fecha_fin }}</p>
                         </div>
