@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Club de la Comuna - Como Unirse{% endblock %}
+
+{% block content %}
+<main>
+    <section class="welcome-section d-flex align-items-center justify-content-center" style="min-height: 0vh; background: linear-gradient(to right, #000, #555); padding: 0px;">
+        <!-- Contenedor único con el mismo fondo degradado -->
+        <div class="content-wrapper d-flex justify-content-between" style="width: 100%; max-width: 1200px; padding: 0px; background: linear-gradient(to right, #000, #555); border-radius: 15px;">
+            <!-- Lado izquierdo: Clientes -->
+            <div class="club-info d-flex flex-column align-items-center justify-content-center text-white p-5" style="flex: 1; border-radius: 15px;">
+                <h2 class="text-center mb-4" style="text-decoration: underline;">Vecinos de Macul</h2>
+                <p class="text-center fs-4 mb-3">Haz click en el menú <strong style="color: #FF7F00;">Iniciar Sesión</strong> y con tu cuenta Google podrás obtener tu Tarjeta Virtual del Club.</p>
+                <div class="icon mt-auto mb-3">
+                    <img src="{% static 'core/images/tarjeta_virtual.png' %}" alt="Icono Club" style="width: 350px; height: 220px;">
+                </div>
+            </div>
+
+            <!-- Lado derecho: Negocios Locales -->
+            <div class="club-info d-flex flex-column align-items-center justify-content-center text-white p-5" style="flex: 1; border-radius: 15px;">
+                <h2 class="text-center mb-4" style="text-decoration: underline;">Negocios Locales</h2>
+                <p class="text-center fs-4 mb-3">Para ser socio del Club de la Comuna, contacta al administrador haciendo click en el menú <strong style="color: #FF7F00;">Contacto</strong>.</p>
+                <div class="icon mt-auto mb-3">
+                    <img src="{% static 'core/images/local_adherido.PNG' %}" alt="Icono Club" style="width: 350px; height: 220px;">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

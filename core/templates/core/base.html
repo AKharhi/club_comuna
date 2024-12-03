@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Club de la Comuna{% endblock %}</title>
 
-    <!-- Estilos y fuentes del template  -->
-
+    <!-- Estilos y fuentes -->
     {% load static %}
-
+    <link rel="icon" type="image/x-icon" href="{% static 'core/images/logoA.PNG' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'core/styles.css' %}" rel="stylesheet" >
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="static/core/chat_widget.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
-    <header class="p-3 bg-black">
+    <header class="bg-black position-fixed w-100" style="top: 0; z-index: 1030; padding: 3px 0;">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a href="{% url 'home' %}">
-                    <img src="{% static 'core/images/logoA.PNG' %}" alt="Logo" style="height: 110px; margin-right: 10px;">
+                    <img src="{% static 'core/images/logoA.PNG' %}" alt="Logo" style="height: 80px; margin-right: 10px;">
                 </a>
                 <h4 class="logo text-white fw-bold m-0"></h4>
             </div>
-            
             <nav>
                 <ul class="nav">
                     <li class="nav-item">
@@ -32,37 +32,83 @@
                     <li class="nav-item">
                         <a class="btn text-white m-1" href="{% url 'contacto' %}">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger m-1" href="#">Mi Club</a>
-                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="btn text-white m-1">Bienvenido, {{ request.user.first_name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-danger m-1" href="{% url 'generar_tarjeta' %}">Mi Cuenta</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-dark m-1" data-bs-toggle="modal" data-bs-target="#logoutModal">Cerrar Sesión</button>
+                            
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-danger m-1" href="{% url 'account_login' %}">Iniciar Sesión</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
     </header>
+
+<!-- Asegúrate de agregar un margen superior en el contenido para que no quede oculto bajo el header fijo -->
+<main style="margin-top: 85px;">
+    <!-- Aquí va el contenido de tu página -->
+</main>
 
     {% block content %}
     {% endblock %}
 
     <footer class="bg-blackfoot text-white text-center py-3">
         <div class="social-footer mb-2">
-            <a href="https://web.facebook.com/clubdelacomuna/?_rdc=1&_rdr" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i>  
+            <a href="https://web.facebook.com/clubdelacomuna/" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/clubdelacomuna/?hl=es-la" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>  
+            <a href="https://www.instagram.com/clubdelacomuna/" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> 
+            <a href="https://wa.link/yuef8d" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
             </a>
             <a href="https://www.youtube.com/@ClubdelaComuna" class="text-white mx-2" style="font-size: 30px;" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-youtube"></i> 
+                <i class="fab fa-youtube"></i>
             </a>
         </div>
         <p>&copy; Club de la Comuna 2024</p>
     </footer>
-    
-    <script src="{% static 'core/scripts.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-</body>
+<!-- Modal para cerrar sesión -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background: linear-gradient(to bottom, #FF7E50, #FFB347); color: #333;">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="logoutModalLabel" style="color: #2C2C2C;">Confirmación</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p style="font-size: 1.2rem; color: #2C2C2C;">¿Confirmas que deseas cerrar la sesión?</p>
+            </div>
+            <div class="modal-footer border-0 d-flex justify-content-between">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="color: #333; font-weight: bold;">Cancelar</button>
+                <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+
+    <script src="{% static 'core/scripts.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="static/core/chat_widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
 </html>

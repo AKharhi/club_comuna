@@ -1,0 +1,111 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Bienvenida{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Contenedor principal con fondo degradado -->
+    <section class="welcome-section position-relative text-white" style="min-height: 80vh; background: linear-gradient(to right, #000, #555); display: flex; align-items: center; justify-content: center; padding: 20px;">
+        <!-- Contenido Principal -->
+        <div class="content-wrapper d-flex" style="width: 100%; max-width: 1200px; justify-content: space-between;">
+            <!-- Sección Izquierda: Tarjeta y Datos del Usuario -->
+            <div class="left-content d-flex flex-column align-items-center" style="flex: 1; padding: 20px;">
+                <h2 class="mb-4 text-center">¡Bienvenido/a <br>
+                    <strong>{{ user.first_name }} {{ user.last_name }}</strong>!</h2>
+                {% if image_url %}
+                <div class="card text-center p-3" style="background-color: #333; border-radius: 15px; width: 450px; height: 280px;">
+                    <img src="{{ image_url }}" alt="Tarjeta de Miembro" class="img-fluid mb-3" style="width: 100%; border-radius: 10px;">
+                    <p class="text-white mb-3"></p>
+                    <!-- Botón de descarga -->
+                    <p><a href="{% url 'descargar_tarjeta' %}" class="btn" style="background-color: blue; color: white;">Descargar Tarjeta</a></p>
+                </div>
+                {% else %}
+                <p class="text-center">No se pudo generar la tarjeta. Inténtalo nuevamente.</p>
+                {% endif %}
+            </div>
+
+            <!-- Sección Derecha: Chatbot y Burbujas -->
+            <div class="right-content d-flex flex-column align-items-center" style="flex: 1; padding: 20px;">
+                <img src="{% static 'core/images/Clubcito.png' %}" alt="Clubcito Chatbot" class="img-fluid mb-3" style="width: 150px; border-radius: 50%;">
+
+                <!-- Mensaje Principal y Burbujas Laterales -->
+                <div class="d-flex align-items-center justify-content-center" style="width: 100%; gap: 20px;">
+                    <!-- Burbuja: Instrucciones de Uso -->
+                    <div class="chat-bubble bg-white text-dark p-3" style="border-radius: 15px; border: 2px solid #000; width: 150px; cursor: pointer;" onclick="document.getElementById('usage-section').scrollIntoView({ behavior: 'smooth' });">
+                        <p class="mb-0 text-center"><strong>Instrucciones<br>de Uso</strong><br>Pincha Aquí</p>
+                    </div>
+
+                    <!-- Mensaje Principal -->
+                    <div class="chat-bubble bg-white text-dark p-4" style="border-radius: 15px; border: 2px solid #000; width: 250px;">
+                        <p class="mb-0 text-center">
+                            Hola soy Clubcito, gracias por ser parte de nuestra comunidad.<br>
+                            Presentando tu tarjeta virtual en los negocios del Club, podrás disfrutar de descuentos exclusivos.<br>
+                            ¡Úsala para obtener beneficios!
+                        </p>
+                    </div>
+
+                    <!-- Burbuja: Términos y Condiciones -->
+                    <div class="chat-bubble bg-white text-dark p-3" style="border-radius: 15px; border: 2px solid #000; width: 150px; cursor: pointer;" onclick="document.getElementById('terms-section').scrollIntoView({ behavior: 'smooth' });">
+                        <p class="mb-0 text-center"><strong>Términos y<br>Condiciones</strong><br>Pincha Aquí</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instrucciones de Uso -->
+    <section id="usage-section" class="usage-instructions bg-white py-5 text-center text-black">
+        <div class="container">
+            <h2 class="mb-4">Instrucciones de Uso</h2>
+            <p>• Presenta esta tarjeta virtual en el punto de venta de cualquier negocio socio del Club.</p>
+            <p>• Asegúrate de mostrar tu Código de Socio para validar el descuento.</p>
+            <p>• Disfruta de tus compras y de los ahorros.</p>
+            <p>Para ver la lista completa de negocios participantes y los descuentos que ofrecen, haz click aquí: <a href="{% url 'negocios' %}">Negocios Locales Socios del Club</a></p>
+        </div>
+    </section>
+
+    <!-- Términos y Condiciones -->
+    <section id="terms-section" class="terms-conditions bg-black py-5 text-white text-center">
+        <div class="container">
+            <h2 class="mb-4">Términos y Condiciones</h2>
+            <p>• Solo válido en negocios afiliados al Club de la Comuna.</p>
+            <p>• Descuentos sujetos a disponibilidad en cada tienda.</p>
+            <p>• Cada negocio puede requerir la validación de los datos de la tarjeta virtual para aplicar los descuentos.</p>
+            <p class="mt-4">¡Gracias por apoyar a nuestra comunidad!</p>
+        </div>
+    </section>
+</main>
+
+<style>
+/* Borde inferior de la burbuja de texto */
+.chat-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Imagen redonda del Clubcito */
+img[alt="Clubcito Chatbot"] {
+    border-radius: 50%;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+    .d-flex.align-items-center.justify-content-center {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chat-bubble {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load socialaccount %}
+{% load static %}  <!-- Cargar las etiquetas de estáticos -->
+
+{% block title %}Inicia sesión en tu cuenta{% endblock %}
+
+{% block content %}
+<main>
+    <section class="login-section d-flex">
+        <!-- Lado izquierdo: Información del Club -->
+        <div class="club-info d-flex flex-column align-items-center justify-content-center text-white p-5" style="flex: 1; background: linear-gradient(to bottom, #333, #555);">
+            <p class="text-center fs-4 mb-5">Inicia sesión para obtener tu Tarjeta Virtual y acceder a los <strong>beneficios</strong> exclusivos del Club.</p>
+            <img src="{% static 'core/images/tarjeta_virtual.png' %}" alt="Icono Club" style="width: 350px; height: 220px;">
+        </div>
+        <!-- Lado derecho: Formulario de Inicio de Sesión -->
+        <div class="login-form d-flex flex-column align-items-center justify-content-center p-5" style="flex: 1; background-color: #f9f9f9;">
+            <h2 class="mb-4">Inicia sesión</h2>
+            <!-- Opción para iniciar sesión con Google -->
+            <a href="{% provider_login_url 'google' %}?prompt=select_account" class="btn btn-outline-dark btn-lg mb-4 d-flex align-items-center" style="width: 80%;">
+                <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
+                Continúa con Google
+            </a>                       
+            <p class="mb-3">¿No tienes cuenta Google?</p>
+            <a href="https://accounts.google.com/signup" target="_blank" class="btn btn-outline-primary d-flex align-items-center" style="width: 80%;">
+                <img src="{% static 'core/images/Google.jpeg' %}" alt="Google Logo" style="width: 20px; height: 20px;" class="me-2">
+                Haz click aquí para crear tu cuenta
+            </a>
+        </div>
+    </section>
+</main>
+{% endblock %}

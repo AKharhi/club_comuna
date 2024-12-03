@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Bienvenido - Club de la Comuna{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Sección de bienvenida con fondo naranja degradado -->
+    <section class="welcome-header text-black py-5" style="background: linear-gradient(to right, #FF7F00, #FFB347);">
+        <div class="container text-center">
+            <h2 class="mb-3"><strong>¡Bienvenido al Club de la Comuna!</strong></h2>
+            <br>
+            <div style="text-align: justify; display: inline-block;">
+                <h3>Nombre del Cliente: Claudio Sandoval {{ user.nombre }}</h3>
+                <h3>Email Verificado: claudios_82@gmail.com {{ user.email }}</h3>
+                <h3>Código de Socio: <strong>cdlc-005A{{ user.codigo_socio }}</strong></h3>
+                <h3>Fecha de Emisión: 02-11-2024 {{ user.fecha_emision }}</h3>
+                <!--<h3>Tarjeta Activa: Sí {{ user.tarjeta_activa }} que esté oculto para el usuario</h3>-->
+            </div>
+        </div>
+    </section>
+    
+
+
+    <section class="user-welcome bg-black py-5 text-white">
+        <div class="container text-center">            
+            <div class="mt-5">
+                <p class="fs-5 text-white">
+                    Estimado Claudio Sandoval{{ user.nombre }},<br>
+                    Gracias por ser parte de nuestra comunidad de negocios locales. Presentando esta tarjeta, podrás disfrutar de descuentos exclusivos en todos los establecimientos miembros de nuestro club. Úsala para obtener beneficios especiales y apoyar a los negocios locales que tanto apreciamos.
+                </p>
+                <!-- Imagen de la tarjeta virtual y botón de descarga -->
+                <div class="card mt-4 mx-auto" style="width: 300px; padding: 20px; background: #444;">
+                    <img src="{% static 'core/images/tarjeta_virtual.jpg' %}" alt="Tarjeta Virtual" class="img-fluid mb-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instrucciones de Uso -->
+    <section class="usage-instructions bg-white py-5 text-center text-black">
+        <div class="container">
+            <h2 class="mb-4">Instrucciones de Uso</h2>
+            <p>• Presenta esta tarjeta virtual en el punto de venta de cualquier negocio socio del Club.</p>
+            <p>• Asegúrate de mostrar tu Código de Socio para validar el descuento.</p>
+            <p>• Disfruta de tus compras y de los ahorros.</p>
+            <p>Para ver la lista completa de negocios participantes y los descuentos que ofrecen, haz click aquí: <a href="{% url 'negocios' %}">Negocios Locales Socios del Club</a></p>
+        </div>
+    </section>
+
+    <!-- Términos y Condiciones -->
+    <section class="terms-conditions bg-black py-5 text-white text-center">
+        <div class="container">
+            <h2 class="mb-4">Términos y Condiciones</h2>
+            <p>• Solo válido en negocios afiliados al Club de la Comuna.</p>
+            <p>• Descuentos sujetos a disponibilidad en cada tienda.</p>
+            <p>• Cada negocio puede requerir la validación de los datos de la tarjeta virtual para aplicar los descuentos.</p>
+            <p class="mt-4">¡Gracias por apoyar a nuestra comunidad!</p>
+            <br>
+            <h3 class="mt-3">Atentamente,<br>Club de la Comuna</h3>
+        </div>
+    </section>
+</main>
+{% endblock %}

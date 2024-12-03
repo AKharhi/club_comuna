@@ -1,103 +1,105 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Negocios{% endblock %}
 
 {% block content %}
-    <main>
-        
-        <section class="business-list bg-black py-5 text-white">
-            <div class="container">
-                <h2 class="text-center mb-4">Negocios Locales del "Club de la Comuna"</h2>
-                <div class="d-flex flex-wrap justify-content-center mb-4">
-                    <button class="btn btn-white m-1">Minimarkets</button>
-                    <button class="btn btn-white m-1">Ferreterías</button>
-                    <button class="btn btn-white m-1">Restaurantes</button>
-                    <button class="btn btn-white m-1">Peluquerías</button>
-                    <button class="btn btn-white m-1">Veterinarias</button>
-                    <button class="btn btn-white m-1">Carnicerías</button>
-                    <button class="btn btn-white m-1">Vestuario</button>
-                    <button class="btn btn-white m-1">Verdulerías</button>
-                </div>
-                
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-light">
-                            <img src="{% static 'core/images/cafeteria.jpg' %}" class="card-img-top" alt="Cafetería Dulce Sabor">
-                            <div class="card-body">
-                                <h3 class="card-title">Cafetería Dulce Sabor</h3>
-                                <br>
-                                <p class="card-text">Dirección: Calle, Macul.</p>
-                                <p>Horario: 10:00 AM - 8:00 PM</p>
-                                <p class="card-text">Ubicación (mapa)</p>
-                                <div class="social-media mt-3">
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-facebook-f"></i> Facebook
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-whatsapp"></i> Whatsapp
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-instagram"></i> Instagram
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-light">
-                            <img src="{% static 'core/images/zapateria.jpg' %}" class="card-img-top" alt="Zapatería La Doña">
-                            <div class="card-body">
-                                <h3 class="card-title">Zapatería La Doña</h3>
-                                <br>
-                                <p class="card-text">Dirección: Calle, Macul.</p>
-                                <p>Horario: 10:00 AM - 8:00 PM</p>
-                                <p class="card-text">Ubicación (mapa)</p>
-                                <div class="social-media mt-3">
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-facebook-f"></i> Facebook
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-whatsapp"></i> Whatsapp
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-instagram"></i> Instagram
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 bg-light">
-                            <img src="{% static 'core/images/panaderia.jpg' %}" class="card-img-top" alt="Panadería MásPan">
-                            <div class="card-body">
-                                <h3 class="card-title">Panadería MásPan</h3>
-                                <br>
-                                <p class="card-text">Dirección: Calle, Macul.</p>
-                                <p>Horario: 10:00 AM - 8:00 PM</p>
-                                <p class="card-text">Ubicación (mapa)</p>
-                                <div class="social-media mt-3">
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-facebook-f"></i> Facebook
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-whatsapp"></i> Whatsapp
-                                    </a>
-                                    <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm">
-                                        <i class="fab fa-instagram"></i> Instagram
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Más tarjetas de negocios aquí -->
-                </div>
-                <br>
-                <div class="text-center mt-4">
-                    <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
-                </div> 
-            </div>
-        </section>
-    </main>
+<main>
+    <section class="business-list bg-black py-5 text-white">
+        <div class="d-flex flex-wrap justify-content-center mb-4">
+            {% for categoria in categorias %}
+                <button class="btn btn-dark m-1 categoria-btn" data-categoria-id="{{ categoria.id }}">
+                    {{ categoria.nombre }}
+                </button>
+            {% endfor %}
+            <button class="btn btn-dark m-1 categoria-btn" data-categoria-id="">Todos</button>
+        </div>
 
-{% endblock %}
+            <div class="row g-4 px-5">
+                <!-- Itera sobre todos los negocios pasados desde la vista -->
+                {% for negocio in negocios %}
+                <div class="col-md-4">
+                    <div class="card h-100 bg-light shadow-lg rounded hvr-grow" data-aos="fade-up">
+                        <!-- Mostrar imagen del negocio -->
+                        {% if negocio.imagen %}
+
+                            <img src="{{ negocio.imagen.url }}" class="card-img-top" alt="{{ negocio.nombre }}">
+                        {% else %}
+                            <img src="{% static 'core/images/default.jpg' %}" class="card-img-top" alt="{{ negocio.nombre }}">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="fas fa-store"></i> {{ negocio.nombre }}</h3>
+                            <p class="card-text"><i class="fas fa-info-circle"></i> {{ negocio.descripcion }}</p>
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
+                            <p class="card-text"><i class="fas fa-phone-alt"></i> Teléfono: {{ negocio.telefono }}</p>
+                        
+                            <div class="social-media mt-3 d-flex justify-content-between ">
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-facebook-f me-2"></i> Facebook
+                                </a>
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-whatsapp me-2"></i> Whatsapp
+                                </a>
+                                <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
+                                    <i class="fab fa-instagram me-2"></i> Instagram
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-center">No hay negocios disponibles en esta categoría.</p>
+                {% endfor %}
+            </div>
+
+            <br>
+
+           
+
+            <div class="text-center mt-4">
+                <a href="{% url 'home' %}" class="btn btn-danger">Ir al inicio</a>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    document.querySelectorAll(".categoria-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const categoriaId = this.getAttribute("data-categoria-id");
+            if (categoriaId) {
+                window.location.href = `/negocios/${categoriaId}/`;
+            } else {
+                window.location.href = "/negocios/";
+            }
+        });
+    });
+</script>
+<section class="map-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Ubicación de Negocios</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </div>
+</section> 
+
+<div id="map"></div>
+  
+
+</main> 
+<!-- 
+
+
+-->
+
+
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPvNQMlfn8E0sUP2GqAWg_lrajGdEM_wg&callback=initMap&libraries=places&v=weekly"
+defer>
+</script>
+<script src="{% static 'core/scripts.js' %}">
+
+</script>
+
+{% endblock %}

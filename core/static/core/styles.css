@@ -12,7 +12,7 @@ h4 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700; /* Bold */
     font-size: 2rem; /* Ajuste de tamaño */
-    color: rgb(252, 252, 252);
+    color: grey;
 }
 
 h5 {
@@ -91,41 +91,73 @@ body {
     color:#030303
 }
 
+/* video home */
+@media (max-width: 576px) {
+    .business-list .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.card {
-    border-radius: 10px;
+    .business-list .content {
+        order: 1;
+        text-align: center;
+    }
+
+    .business-list .video {
+        order: 2;
+        width: 100%; /* Asegura que el video ocupe todo el ancho disponible */
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .business-list .video iframe {
+        width: 100%; /* Asegura que el iframe ocupe todo el ancho del contenedor */
+        height: auto; /* Ajusta la altura para mantener la proporción */
+    }
 }
 
-.card-title {
-    font-size: 1.5rem;
+/* banner */
+/* Estilo general para el banner y tarjetas */
+.offers .card {
+    background-color: #ed8068; /* Fondo naranja */
+    border: none; /* Opcional: quitar borde */
+    padding: 1rem; /* Reduce el padding interno de la tarjeta */
+    height: 100%; /* Asegura que la tarjeta se adapte automáticamente */
+    max-width: 300px; /* Establece un ancho máximo para uniformidad */
+    margin: auto; /* Centra la tarjeta dentro de su contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.carousel-inner img {
-    height: 300px;
-    object-fit: cover;
+/* Imagen dentro de la tarjeta */
+.offers .card img {
+    height: 150px; /* Ajusta esta altura según lo que necesites */
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
+    object-fit: cover; /* Asegura que la imagen se recorte sin deformarse */
+    border-top-left-radius: 10px; /* Opcional: redondea las esquinas superiores */
+    border-top-right-radius: 10px; /* Opcional: redondea las esquinas superiores */
 }
 
-.carousel-caption {
-    position: absolute;
-    left: 0;
-    bottom: 30px; /* Ajuste de distancia desde la parte inferior */
-    width: 50%; /* Texto en la mitad izquierda */
-    background-color: rgba(0, 0, 0, 0.5); /* fondo semitransparente */
-    padding: 10px;
-    border-radius: 0 5px 5px 0; 
-    text-align: left; /* Texto alineado a la izquierda */
+/* Contenido de la tarjeta */
+.offers .card .card-body {
+    padding: 0.5rem; /* Ajusta el relleno interno para hacer el contenido más compacto */
+    font-size: 0.9em; /* Reduce el tamaño de la fuente */
+    line-height: 1.5; /* Controla el interlineado */
 }
 
-.carousel-business-name {
-    position: absolute;
-    top: 10px; /* Ajuste de posición */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1.2rem; /* Tamaño de fuente ajustable */
+/* Título de la tarjeta */
+.offers .card .card-title {
+    color: black; /* Asegura que el título sea negro */
+    font-size: 1.2em; /* Ajusta el tamaño del título */
+    margin-bottom: 0.5rem; /* Reduce el espacio inferior del título */
+}
+
+/* Texto de la tarjeta */
+.offers .card .card-text {
+    color: black; /* Asegura que el texto sea negro */
+    font-size: 0.9em; /* Reduce el tamaño del texto */
 }
 
 /* Flechas de navegación */
@@ -137,20 +169,27 @@ body {
 
 .carousel-control-prev,
 .carousel-control-next {
-    position: absolute;
     top: 100%; /* Ubicación de las flechas bajo la imagen */
     transform: translateY(-50%);
-    width: 50px; 
-    height: 50px; 
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 10px;
 }
 
 .carousel-control-prev {
-    left: 40%; /* Flecha a la izquierda */
+    left: 30%; /* Flecha a la izquierda */
 }
 
 .carousel-control-next {
-    right: 40%; /* Flecha a la derecha */
+    right: 30%; /* Flecha a la derecha */
 }
+
 
 .social-media {
     text-align: center; 
@@ -163,9 +202,20 @@ body {
     gap: 15px; /* Espaciado de los botones */
 }
 
-footer p {
+footer {
     margin: 0;
+    padding-top: 10px; /* Ajusta según sea necesario */
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #000; /* El mismo color que el fondo del footer */
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 136px; /* Ajusta según lo necesario */
 }
+
+
 
 .social-footer a {
     font-weight: bold;
@@ -189,21 +239,33 @@ footer p {
     color: black;
 }
 
+/* El Club*/
 .img-fluid {
     width: 100%;
-    height: auto; /* Asegura que la imagen mantenga su relación de aspecto */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
 }
 
 .col-md-6 {
+    /* Eliminamos flex para el texto, mantenemos flex solo en la imagen */
+    display: block;
+}
+
+.col-md-6.img-container {
     display: flex;
-    align-items: center; /* Alinea verticalmente la imagen con el contenido vecino */
+    align-items: center; /* Alinea la imagen verticalmente al centro */
 }
 
 img {
-    max-height: 100%; /* Limita la altura de la imagen para que se ajuste al contenedor */
-    object-fit: cover; /* Asegura que la imagen mantenga su proporción y se recorte si es necesario */
+    max-height: 100%; /* Limita la altura de la imagen al contenedor */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
 }
 
+p {
+    line-height: 1.8; /* Asegura un buen espaciado entre las líneas */
+}
+
+
+/*Formulario contacto*/
 .form-container {
     background-color: #f9f9f9;
     border: 2px solid #ddd;
@@ -216,6 +278,73 @@ img {
     font-size: 1.1rem;
     max-width: 100%;
 }
+
+p {
+    line-height: 1.6; /* Ajusta el valor según el espaciado que prefieras */
+}
+
+.card-img-top {
+    object-fit: cover; /* Recorta la imagen para que mantenga proporciones */
+    width: 100%;       /* Asegura que la imagen tome el 100% del ancho del contenedor */
+    height: 250px;     /* Define una altura fija */
+}
+
+
+/*Login*/
+@media (max-width: 576px) {
+    .login-section {
+        flex-direction: column; /* Apila las columnas verticalmente */
+    }
+
+    .club-info,
+    .login-form {
+        flex: 1 1 auto; /* Ocupa el ancho completo */
+        padding: 20px; /* Ajusta el padding */
+        text-align: center; /* Centra el texto */
+    }
+
+    .btn {
+        width: 100%; /* Asegura que los botones ocupen el ancho completo */
+        font-size: 16px; /* Reduce el tamaño de la fuente */
+    }
+
+    img {
+        width: auto; /* Permite que las imágenes se adapten */
+        max-width: 100%; /* Asegura que no excedan el contenedor */
+        height: auto; /* Mantiene la proporción */
+    }
+}
+
+
+
+
+
+
+
+/**
+ * @license
+ */
+/* 
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+ #map {
+    height: 100%;
+  }
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+ 
+  map {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
 
 
 
