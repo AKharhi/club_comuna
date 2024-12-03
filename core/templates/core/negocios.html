@@ -19,7 +19,7 @@
                 <!-- Itera sobre todos los negocios pasados desde la vista -->
                 {% for negocio in negocios %}
                 <div class="col-md-4">
-                    <div class="card h-100 bg-light">
+                    <div class="card h-100 bg-light shadow-lg rounded hvr-grow" data-aos="fade-up">
                         <!-- Mostrar imagen del negocio -->
                         {% if negocio.imagen %}
 
@@ -29,9 +29,10 @@
                         {% endif %}
 
                         <div class="card-body">
-                            <h3 class="card-title">{{ negocio.nombre }}</h3>
-                            <p class="card-text">{{ negocio.descripcion }}</p>
-                            <p class="card-text">Dirección: {{ negocio.direccion }}</p>
+                            <h3 class="card-title"><i class="fas fa-store"></i> {{ negocio.nombre }}</h3>
+                            <p class="card-text"><i class="fas fa-info-circle"></i> {{ negocio.descripcion }}</p>
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Dirección: {{ negocio.direccion }}</p>
+                            <p class="card-text"><i class="fas fa-phone-alt"></i> Teléfono: {{ negocio.telefono }}</p>
                         
                             <div class="social-media mt-3 d-flex justify-content-between ">
                                 <a href="#" class="btn btn-rrss btn-outline-secondary btn-sm d-flex align-items-center justify-content-center">
